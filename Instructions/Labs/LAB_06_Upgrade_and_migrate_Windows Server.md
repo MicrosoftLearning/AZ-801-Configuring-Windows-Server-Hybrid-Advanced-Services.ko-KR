@@ -37,7 +37,7 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
    - 암호: **Pa55w.rd**
    - 도메인: **CONTOSO**
 
-이 랩에서는 사용 가능한 VM 환경과 Azure 구독을 사용합니다. 랩을 시작하기 전에 구독에서 소유자 역할이 있는 Azure 구독 및 사용자 계정이 있는지 확인하세요.
+이 랩에서는 사용 가능한 VM 환경과 Azure 구독을 사용합니다. 랩을 시작하기 전에 구독에서 Owner 역할이 있는 Azure 구독 및 사용자 계정이 있는지 확인하세요.
 
 ## <a name="exercise-1-deploying-ad-ds-domain-controllers-in-azure"></a>연습 1: Azure에서 AD DS 도메인 컨트롤러 배포
 
@@ -53,7 +53,7 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
 
 #### <a name="task-1-deploy-a-domain-controller-by-using-an-azure-resource-manager-arm-template"></a>작업 1: ARM(Azure Resource Manager) 템플릿을 사용하여 도메인 컨트롤러 배포
 
-1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[Azure Portal](https://portal.azure.com)** 로 이동한 후 이 랩에서 사용할 구독에서 소유자 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
+1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[Azure Portal](https://portal.azure.com)** 로 이동한 후 이 랩에서 사용할 구독에서 Owner 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
 1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[새 Windows VM 만들기 및 새 AD 포리스트, 도메인 및 DC 만들기](https://github.com/az140mp/azure-quickstart-templates/tree/master/application-workloads/active-directory/active-directory-new-domain)** 에서 사용자 지정 버전의 QuickStart 템플릿으로 이동합니다. 
 1. **새 Windows VM 만들기 및 새 AD 포리스트, 도메인 및 DC 만들기** 페이지에서 Azure에 배포를 시작합니다. 
 1. **새 AD 포리스트로 Azure VM 만들기** 페이지에서 **템플릿 편집** 을 선택합니다.
@@ -89,14 +89,14 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
 
    | 설정 | 값 | 
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
    | 지역 | Azure VM을 프로비전할 수 있는 Azure 지역의 이름 |
-   | 관리자 사용자 이름 | **학생** |
+   | 관리자 사용자 이름 | **Student** |
    | 관리자 암호 | **Pa55w.rd1234** |
    | 도메인 이름 | **contoso.com** |
    | Vm 크기 | **표준 D2s v3** |
-   | 가상 컴퓨터 이름 | **az801l06a-dc1** |
+   | 가상 머신 이름 | **az801l06a-dc1** |
    | Virtual Network 이름 | **az801l06a-vnet** |
    | 가상 네트워크 주소 범위 | **10.6.0.0/16** |
    | 네트워크 인터페이스 이름 | **az801l06a-dc1-nic1** |
@@ -128,8 +128,8 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
 
    | 설정 | 값 | 
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | 새 리소스 그룹 **AZ801-L0602-RG** 의 이름 |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0602-RG** 의 이름 |
    | 이름 | **az801l06a-bastion** |
    | 지역 | 이 연습의 이전 작업에서 리소스를 배포한 동일한 Azure 지역 |
    | 계층 | **기본** |
@@ -148,8 +148,8 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
 
    | 설정 | 값 |
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
    | 가상 머신 이름 | **az801l06a-dc2** |
    | 지역 | 이 연습의 앞부분에서 첫 번째 가상 머신을 배포한 동일한 Azure 지역을 선택합니다. |
    | 가용성 옵션 | **가용성 집합** |
@@ -157,7 +157,7 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
    | 이미지 | **Windows Server 2022 Datacenter - Gen2** |
    | Azure Spot 인스턴스 | **아니요** |
    | 크기 | **표준 D2s v3** |
-   | 사용자 이름 | **학생** |
+   | 사용자 이름 | **Student** |
    | 암호 | **Pa55w.rd1234** |
    | 공용 인바운드 포트 | **없음** |
    | 기존 Windows Server 라이선스를 사용하시겠습니까? | **아니요** |
@@ -170,7 +170,7 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
    | 공용 IP | **없음** |
    | NIC 네트워크 보안 그룹 추가 | **없음** |
    | 가속화된 네트워킹 | 사용 |
-   | 기존 부하 분산 솔루션 뒤에 이 가상 머신을 배치하시겠습니까? | disabled |
+   | 기존 부하 분산 솔루션 뒤에 이 가상 머신을 배치하시겠습니까? | 사용 안 함 |
    | 부트 진단 | **관리형 스토리지 계정으로 활성화(권장)** |
    | 패치 오케스트레이션 옵션 | **수동 업데이트** |  
 
@@ -189,7 +189,7 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
 
    | 설정 | 값 | 
    | --- | --- |
-   | 사용자 이름 |**학생** |
+   | 사용자 이름 |**Student** |
    | 암호 |**Pa55w.rd1234** |
 
 1. **az801l06a-dc2** 에 대한 원격 데스크톱 세션 내에서 Windows PowerShell 세션을 시작합니다.
@@ -218,7 +218,7 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
 1. AD DS 데이터베이스, 로그 파일 및 SYSVOL을 호스트하는 폴더를 호스트하는 드라이브를 드라이브 **C** 에서 드라이브 **F** 로 변경합니다.
 1. **필수 조건 확인** 페이지에서 고정 IP 주소가 없는 네트워크 어댑터에 대한 경고를 확인하고 승격을 시작합니다. 
 
-   > **참고**: 고정 IP 주소가 운영 체제가 아닌 플랫폼 수준에서 할당되기 때문에 발생할 수 있습니다.
+   > **참고**: 고정 IP 주소가 운영 체제가 아닌 플랫폼 수준에서 할당되기 때문에 경고가 발생할 수 있습니다.
 
    > **참고**: 승격 프로세스를 완료하기 위해 운영 체제가 자동으로 다시 시작됩니다.
 
@@ -351,7 +351,7 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
 
    | 설정 | 값 | 
    | --- | --- |
-   | DHCP 사용 | disabled |
+   | DHCP 사용 | 사용 안 함 |
    | IP 주소 | **172.16.10.111** |
    | 서브넷 | **255.255.0.0** |
    | 게이트웨이 | **172.16.10.1** |

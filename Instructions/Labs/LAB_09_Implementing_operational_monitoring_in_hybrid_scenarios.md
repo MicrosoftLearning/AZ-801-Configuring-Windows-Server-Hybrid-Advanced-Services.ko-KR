@@ -33,13 +33,13 @@ ms.locfileid: "137907120"
 > **참고**: **AZ-801T00A-SEA-DC1**, **AZ-801T00A-SEA-SVR2** 가상 머신은 **SEA-DC1** 및 **SEA-SVR2** 의 설치를 호스팅합니다.
 
 1. **SEA-SVR2** 를 선택합니다.
-1. 다음 자격 증명을 사용하여 로그인:
+1. 다음 자격 증명을 사용하여 로그인합니다.
 
    - 사용자 이름: **Administrator**
    - 암호: **Pa55w.rd**
    - 도메인: **CONTOSO**
 
-이 랩에서는 사용 가능한 VM 환경과 Azure 구독을 사용합니다. 랩을 시작하기 전에 구독에서 소유자 역할이 있는 Azure 구독 및 사용자 계정이 있는지 확인하세요.
+이 랩에서는 사용 가능한 VM 환경과 Azure 구독을 사용합니다. 랩을 시작하기 전에 구독에서 Owner 역할이 있는 Azure 구독 및 사용자 계정이 있는지 확인하세요.
 
 ## <a name="exercise-1-preparing-a-monitoring-environment"></a>연습 1: 모니터링 환경 준비
 
@@ -53,7 +53,7 @@ ms.locfileid: "137907120"
 
 이 작업에서는 모니터링 시나리오를 테스트하는 데 사용할 가상 머신을 배포합니다.
 
-1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[Azure Portal](https://portal.azure.com)** 로 이동한 후 이 랩에서 사용할 구독에서 소유자 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
+1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[Azure Portal](https://portal.azure.com)** 로 이동한 후 이 랩에서 사용할 구독에서 Owner 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
 1. **SEA-SVR2** 에서 Azure Portal을 표시하는 Microsoft Edge 창의 Azure Cloud Shell에서 PowerShell 세션을 엽니다.
 1. Cloud Shell 창에서 **C:\\Labfiles\\Lab02\\L02-sub_template.json**, **C:\\Labfiles\\Lab09\\L09-rg_template.json**, **C:\\Labfiles\\Lab09\\L09-rg_template.parameters.json** 파일을 Cloud Shell 홈 디렉터리에 업로드합니다.
 1. 랩 환경을 호스트할 리소스 그룹을 만들려면 Cloud Shell 창의 **PowerShell** 세션에서 다음 명령을 실행합니다(`<Azure_region>` 자리 표시자를 이 랩에서 리소스를 배포하려는 Azure 지역의 이름으로 바꿈)
@@ -97,8 +97,8 @@ ms.locfileid: "137907120"
 
    | 설정 | 값 |
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | 새 리소스 그룹 **AZ801-L0902-RG** 의 이름 |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0902-RG** 의 이름 |
    | Log Analytics 작업 영역 | 고유 이름 |
    | 지역 | 이전 작업에서 가상 머신을 배포한 Azure 지역의 이름 |
 
@@ -111,7 +111,7 @@ ms.locfileid: "137907120"
 이 연습의 주요 작업은 다음과 같습니다.
 
 1. Windows Admin Center를 Azure에 등록합니다.
-1. Azure Monitor와 온-프레미스 Windows Server 통합
+1. Azure Monitor와 온-프레미스 Windows Server 통합합니다.
 
 #### <a name="task-1-register-windows-admin-center-with-azure"></a>작업 1: Windows Admin Center를 Azure에 등록
 
@@ -140,15 +140,15 @@ ms.locfileid: "137907120"
 
 1. Windows Admin Center에서 **설정** 페이지로 이동하여 이 랩에서 사용 중인 Azure 구독에 Windows Admin Center를 등록합니다. 
 
-#### <a name="task-2-integrate-an-on-premises-windows-server-with-azure-monitor"></a>작업 2: Azure Monitor와 온-프레미스 Windows Server 통합
+#### <a name="task-2-integrate-an-on-premises-windows-server-with-azure-monitor"></a>작업 2: Azure Monitor와 온-프레미스 Windows Server 통합합니다.
 
 1. **SEA-SVR2** 에서 **sea-svr2.contoso.com** 페이지로 이동합니다. 
 1. **sea-svr2.contoso.com** 페이지에서 **도구** 메뉴를 사용하여 다음 설정으로 로컬 서버를 **Azure Monitor** 에 온보딩합니다.
 
    | 설정 | 값 |
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | **AZ801-L0901-RG** |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | **AZ801-L0901-RG** |
    | 리소스 그룹 지역 | 이전 연습에서 가상 머신을 배포한 Azure 지역의 이름 |
    | Log Analytics 작업 영역 | 이전 연습에서 만든 작업 영역의 이름 |
    | Azure Arc 사용 | 선택 |
@@ -259,8 +259,8 @@ ms.locfileid: "137907120"
 
    | 설정 | 값 |
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | **AZ801-L0902-RG** |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | **AZ801-L0902-RG** |
    | 작업 그룹 이름 | **az801l09-ag1** |
    | 표시 이름 | **az801l09-ag1** |
    | 알림 유형 | **메일/SMS/푸시/음성** |
@@ -273,7 +273,7 @@ ms.locfileid: "137907120"
    | --- | --- |
    | 경고 규칙 이름 | **CPU Percentage above the test threshold** |
    | 설명 | **테스트 임계값을 초과하는 CPU 백분율** |
-   | Resource group | **AZ801-L0902-RG** |
+   | 리소스 그룹 | **AZ801-L0902-RG** |
    | 심각도 | **Sev 3** |
    | 규칙을 만들면 바로 사용 | **예** |
 

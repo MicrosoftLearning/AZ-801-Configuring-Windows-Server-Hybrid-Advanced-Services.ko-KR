@@ -34,7 +34,7 @@ Contoso의 선임 네트워크 관리자 중 한 명인 사용자는 Windows Ser
 > **참고**: **AZ-801T00A-SEA-DC1**, **AZ-801T00A-SEA-SVR1**, **AZ-801T00A-SEA-SVR2** 가상 머신은 **SEA-DC1**, **SEA-SVR1**, **SEA-SVR2** 의 설치를 호스팅합니다.
 
 1. **SEA-SVR2** 를 선택합니다.
-1. 다음 자격 증명을 사용하여 로그인:
+1. 다음 자격 증명을 사용하여 로그인합니다.
 
    - 사용자 이름: **Administrator**
    - 암호: **Pa55w.rd**

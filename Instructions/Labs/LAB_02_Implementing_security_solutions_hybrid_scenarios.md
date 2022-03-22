@@ -34,13 +34,13 @@ ms.locfileid: "137907131"
 > **참고**: **AZ-801T00A-SEA-DC1**, **AZ-801T00A-SEA-SVR1**, **AZ-801T00A-SEA-SVR2** 가상 머신은 각각 **SEA-DC1**, **SEA-SVR1**, **SEA-SVR2** 의 설치를 호스트합니다.
 
 1. **SEA-SVR2** 를 선택합니다.
-1. 다음 자격 증명을 사용하여 로그인:
+1. 다음 자격 증명을 사용하여 로그인합니다.
 
    - 사용자 이름: **Administrator**
    - 암호: **Pa55w.rd**
    - 도메인: **CONTOSO**
 
-이 랩에서는 사용 가능한 VM 환경과 Azure 구독을 사용합니다. 랩을 시작하기 전에 구독에서 소유자 또는 기여자 역할이 있는 Azure 구독 및 사용자 계정이 있는지 확인하세요.
+이 랩에서는 사용 가능한 VM 환경과 Azure 구독을 사용합니다. 랩을 시작하기 전에 구독에서 Owner 또는 Contributor 역할이 있는 Azure 구독 및 사용자 계정이 있는지 확인하세요.
 
 ## <a name="exercise-1-creating-an-azure-log-analytics-workspace-and-an-azure-automation-account"></a>연습 1: Azure Log Analytics 작업 영역 및 Azure Automation 계정 만들기
 
@@ -55,13 +55,13 @@ ms.locfileid: "137907131"
 
 #### <a name="task-1-create-an-azure-log-analytics-workspace"></a>작업 1: Azure Log Analytics 작업 영역 만들기 
 
-1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[Azure Portal](https://portal.azure.com)** 로 이동한 후 이 랩에서 사용할 구독에서 소유자 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
+1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[Azure Portal](https://portal.azure.com)** 로 이동한 후 이 랩에서 사용할 구독에서 Owner 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
 1. Azure Portal에서 다음 설정을 사용하여 Log Analytics 작업 영역을 만듭니다.
 
    | 설정 | 값 |
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | 새 리소스 그룹 **AZ801-L0201-RG** 의 이름 |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0201-RG** 의 이름 |
    | Log Analytics 작업 영역 | 고유한 이름 |
    | 지역 | 이전 작업에서 가상 머신을 배포한 Azure 지역의 이름 |
 
@@ -73,8 +73,8 @@ ms.locfileid: "137907131"
 
    | 설정 | 값 |
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | **AZ801-L0201-RG** |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | **AZ801-L0201-RG** |
    | 이름 | 고유한 이름 |
    | 지역 | [작업 영역 매핑 설명서](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings)에 따라 결정되는 Azure 지역의 이름 |
 
@@ -84,14 +84,14 @@ ms.locfileid: "137907131"
 
 1. Azure Portal에서 새로 만든 Azure Automation 계정으로 이동합니다. 
 1. **Automation 계정** 페이지에서 **인벤토리** 페이지로 이동합니다.
-1. **인벤토리** 페이지에서 이 작업의 앞부분에서 만든 Log Analytics 작업 영역과 연결하여 솔루션을 활성화합니다.
+1. **인벤토리** 페이지에서 이 작업의 앞부분에서 만든 Log Analytics 작업 영역과 연결하여 솔루션을 사용하도록 설정합니다.
 
    >**참고**: 해당 Log Analytics 솔루션의 설치가 완료되기를 기다립니다. 3분 정도 걸릴 수 있습니다. 
 
    >**참고**: **변경 내용 추적** 솔루션도 자동으로 설치됩니다.
 
 1. **Automation 계정** 페이지에서 **업데이트 관리** 페이지로 이동합니다.
-1. **Automation 계정** 페이지에서 이 작업의 앞부분에서 만든 Log Analytics 작업 영역과 연결하여 솔루션을 활성화합니다.
+1. **Automation 계정** 페이지에서 이 작업의 앞부분에서 만든 Log Analytics 작업 영역과 연결하여 솔루션을 사용하도록 설정합니다.
 
    >**참고**: 설치가 완료될 때까지 기다립니다. 5분 정도 걸릴 수 있습니다.
 
@@ -103,40 +103,40 @@ ms.locfileid: "137907131"
 
 이 연습의 주요 작업은 다음과 같습니다.
 
-1. 클라우드용 Defender 및 자동 에이전트 설치를 활성화합니다.
-1. 클라우드용 Defender의 보안 강화를 활성화합니다.
+1. 클라우드용 Defender 및 자동 에이전트 설치를 사용하도록 설정합니다.
+1. 클라우드용 Defender의 보안 강화를 사용하도록 설정합니다.
 
 #### <a name="task-1-enable-defender-for-cloud-and-automatic-agent-installation"></a>작업 1: 클라우드용 Microsoft Defender 및 자동 에이전트 설치 사용
 
-이 작업에서는 Azure 구독에 연결하고 클라우드용 Defender의 보안 강화를 활성화합니다.
+이 작업에서는 Azure 구독에 연결하고 클라우드용 Defender의 보안 강화를 사용하도록 설정합니다.
 
 1. **SEA-SVR2** 의 Azure Portal에서 **클라우드용 Microsoft Defender** 페이지로 이동합니다.
-1. 구독을 클라우드용 Defender로 업그레이드하고 자동 에이전트 설치를 활성화합니다. 
+1. 구독을 클라우드용 Defender로 업그레이드하고 자동 에이전트 설치를 사용하도록 설정합니다. 
 
    > **참고:** 구독에 이미 클라우드용 Defender의 보안 강화가 활성화되어 있을 수 있습니다. 이 경우 다음 작업을 계속합니다.
 
 #### <a name="task-2-enable-enhanced-security-of-defender-for-cloud"></a>작업 2: 클라우드용 Defender의 보안 강화 활성화
 
-이 작업에서는 클라우드용 Defender의 보안 강화를 활성화합니다.
+이 작업에서는 클라우드용 Defender의 보안 강화를 사용하도록 설정합니다.
 
 1. **SEA-SVR2** 의 Azure Portal을 표시하는 Microsoft Edge 창의 **클라우드용 Microsoft Defender | 개요** 페이지에서 **환경 설정** 페이지로 이동합니다.
 1. **환경 설정** 페이지에서 Azure 구독에서 사용할 수 있는 클라우드용 Defender 플랜을 검토합니다.
 
    > **참고:** 동일한 페이지에 나열된 개별 Microsoft Defender 플랜을 선택적으로 비활성화할 수 있습니다.
 
-1. **서버용 Microsoft Defender** 플랜을 활성화합니다. 
+1. **서버용 Microsoft Defender** 플랜을 사용하도록 설정합니다. 
 1. **설정 \| 자동 프로비전** 페이지로 이동합니다. 
 1. 확장 목록에서 다음 작업을 수행합니다.
 
-   - 이전 연습에서 만든 Log Analytics 작업 영역을 활용하여 **Azure VM용 Log Analytics 에이전트** 를 활성화합니다.
-   - 이전 연습에서 만든 Log Analytics 작업 영역을 활용하여 **Azure Arc Machine용 Log Analytics 에이전트(미리 보기)** 를 활성화합니다.
-   - **Microsoft 위협 및 취약성 관리** 옵션을 사용하여 **컴퓨터에 대한 취약성 평가** 를 활성화합니다.
-   - **게스트 구성 에이전트(미리 보기)** 를 활성화합니다.
-   - **Microsoft Dependency Agent(미리 보기)** 를 활성화합니다.
+   - 이전 연습에서 만든 Log Analytics 작업 영역을 활용하여 **Azure VM용 Log Analytics 에이전트** 를 사용하도록 설정합니다.
+   - 이전 연습에서 만든 Log Analytics 작업 영역을 활용하여 **Azure Arc Machine용 Log Analytics 에이전트(미리 보기)** 를 사용하도록 설정합니다.
+   - **Microsoft 위협 및 취약성 관리** 옵션을 사용하여 **컴퓨터에 대한 취약성 평가** 를 사용하도록 설정합니다.
+   - **게스트 구성 에이전트(미리 보기)** 를 사용하도록 설정합니다.
+   - **Microsoft Dependency Agent(미리 보기)** 를 사용하도록 설정합니다.
 
 1. 클라우드용 Defender의 **클라우드 환경 설정** 페이지로 이동합니다.
 1. **환경 설정** 페이지에서 Azure 구독을 나타내는 항목을 확장하고 이전 연습에서 만든 Log Analytics 작업 영역을 나타내는 항목을 검토합니다.
-1. **설정 \| Defender 플랜** 페이지에서 작업 영역에서 사용할 수 있는 모든 클라우드용 Defender 플랜을 활성화합니다.
+1. **설정 \| Defender 플랜** 페이지에서 작업 영역에서 사용할 수 있는 모든 클라우드용 Defender 플랜을 사용하도록 설정합니다.
 
    > **참고:** 위협 방지 기능을 포함한 모든 클라우드용 Defender 기능을 사용하도록 설정하려면 해당 워크로드를 포함하는 구독에서 보안 강화 기능을 사용하도록 설정해야 합니다. 작업 영역 수준에서 사용하도록 설정해도 Just-In-Time VM 액세스, 적응형 애플리케이션 제어 및 Azure 리소스에 대한 네트워크 검색 기능은 사용하도록 설정되지 않습니다. 또한 작업 영역 수준에서 사용할 수 있는 유일한 Microsoft Defender 플랜은 서버용 Microsoft Defender와 컴퓨터의 SQL Server용 Microsoft Defender입니다.
 
@@ -167,7 +167,7 @@ Windows Server를 실행하는 Azure VM에 대한 이점을 포함하여 하이�
 이 작업에서는 Azure Resource Manager 템플릿을 사용하여 Azure VM을 배포합니다.
 
 1. **SEA-SVR2** 에서 Azure Portal의 Cloud Shell 창에서 **C:\\Labfiles\\Lab02\\L02-sub_template.json**, **C:\\Labfiles\\Lab02\\L02-rg_template.json**, **C:\\Labfiles\\Lab02\\L02-rg_template.parameters.json** 파일을 Cloud Shell 홈 디렉터리에 업로드합니다.
-1. 랩 환경을 호스트할 리소스 그룹을 만들려면 Cloud Shell 창의 **PowerShell** 세션에서 다음 명령을 실행합니다(`<Azure_region>` 자리 표시자를 이 랩에서 리소스를 배포하려는 Azure 지역의 이름으로 바꿈)
+1. 랩 환경을 호스트할 리소스 그룹을 만들려면 Cloud Shell 창의 **PowerShell** 세션에서 다음 명령을 실행합니다(`<Azure_region>` 자리 표시자를 이 랩에서 리소스를 배포하려는 Azure 지역의 이름으로 교체)
 
    >**참고**: **(Get-AzLocation).Location** 명령을 사용하여 사용 가능한 Azure 지역의 이름을 나열할 수 있습니다.
 
@@ -196,8 +196,8 @@ Windows Server를 실행하는 Azure VM에 대한 이점을 포함하여 하이�
 
 1. Log Analytics 에이전트의 수동 설치를 수행합니다.
 1. Log Analytics 에이전트의 무인 설치를 수행합니다.
-1. Azure VM용 Azure Automation 솔루션을 활성화합니다.
-1. 온-프레미스 서버에 Azure Automation 솔루션을 활성화합니다.
+1. Azure VM용 Azure Automation 솔루션을 사용하도록 설정합니다.
+1. 온-프레미스 서버에 Azure Automation 솔루션을 사용하도록 설정합니다.
 
 #### <a name="task-1-perform-manual-installation-of-the-log-analytics-agent"></a>작업 1: Log Analytics 에이전트 수동 설치 수행
 
@@ -237,7 +237,7 @@ Windows Server를 실행하는 Azure VM에 대한 이점을 포함하여 하이�
    Copy-Item -Path 'C:\Labfiles\L02\*' -Destination '\\SEA-SVR1\c$\Labfiles\L02' -Recurse -Force
    ```
 
-1. **SEA-SVR1** 에 Log Analytics 에이전트를 설치하려면 **Windows PowerShell** 콘솔에서 다음 명령을 실행합니다(`<WorkspaceID>` 및 `<PrimaryKey>` 자리 표시자를 이 연습의 이전 작업에서 기록한 **작업 영역 ID** 및 **작업 영역 키** 값으로 바꿈)
+1. **SEA-SVR1** 에 Log Analytics 에이전트를 설치하려면 **Windows PowerShell** 콘솔에서 다음 명령을 실행합니다(`<WorkspaceID>` 및 `<PrimaryKey>` 자리 표시자를 이 연습의 이전 작업에서 기록한 **작업 영역 ID** 및 **작업 영역 키** 값으로 교체)
 
    ```powershell
    Invoke-Command -ComputerName SEA-SVR1.contoso.com -ScriptBlock { Start-Process -FilePath C:\Labfiles\L02\setup.exe -ArgumentList '/qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID="<WorkspaceID>" OPINSIGHTS_WORKSPACE_KEY="<PrimaryKey>" AcceptEndUserLicenseAgreement=1' -Wait }
@@ -249,12 +249,12 @@ Windows Server를 실행하는 Azure VM에 대한 이점을 포함하여 하이�
 
 1. **SEA-SVR2** 에서 Azure Portal을 표시하는 Microsoft Edge 창으로 전환하고 이 랩의 앞부분에서 프로비전한 Azure Automation 계정 페이지로 이동합니다. 
 1. Automation 계정 페이지에서 **인벤토리** 페이지로 이동합니다.
-1. **인벤토리** 페이지에서 도구 모음의 **+ Azure VM 추가** 단추를 사용하여 **az801l02-vm0** Azure VM에 대한 인벤토리 및 변경 내용 추적을 활성화합니다. 
+1. **인벤토리** 페이지에서 도구 모음의 **+ Azure VM 추가** 단추를 사용하여 **az801l02-vm0** Azure VM에 대한 인벤토리 및 변경 내용 추적을 사용하도록 설정합니다. 
 
    > **참고:** **사용 가능** 으로 나열되도록 하려면 VM을 Automation 계정 솔루션과 연결된 Log Analytics 작업 영역에 연결해야 합니다.
 
 1. Automation 계정의 **업데이트 관리** 페이지로 이동합니다.
-1. **업데이트 관리** 페이지에서 도구 모음의 **+ Azure VM 추가** 단추를 사용하여 **az801l02-vm0** Azure VM에 대한 업데이트 관리를 활성화합니다. 
+1. **업데이트 관리** 페이지에서 도구 모음의 **+ Azure VM 추가** 단추를 사용하여 **az801l02-vm0** Azure VM에 대한 업데이트 관리를 사용하도록 설정합니다. 
 
    > **참고:** 인벤토리 솔루션과 마찬가지로, **사용 가능** 으로 나열되도록 하려면 VM을 Automation 계정 솔루션과 연결된 Log Analytics 작업 영역에 연결해야 합니다.
 
@@ -264,12 +264,12 @@ Windows Server를 실행하는 Azure VM에 대한 이점을 포함하여 하이�
 
 1. **SEA-SVR2** 의 Azure Portal을 표시하는 Microsoft Edge 창에서 이 랩의 앞부분에서 프로비전한 **Azure Automation 계정** 페이지로 이동합니다. 
 1. **Automation 계정** 페이지에서 **인벤토리** 페이지로 이동합니다.
-1. **인벤토리** 페이지에서 **클릭을 사용하여 컴퓨터 링크를 관리** 하여 온-프레미스 서버에 대한 인벤토리 및 변경 내용 추적을 활성화합니다.
+1. **인벤토리** 페이지에서 **컴퓨터를 관리하려면 클릭하세요** 링크를 사용하여 온-프레미스 서버에 대한 인벤토리 및 변경 내용 추적을 사용하도록 설정합니다.
 
    > **참고:** 이 옵션은 인벤토리, 변경 내용 추적 및 업데이트 관리 솔루션을 호스트하는 Azure Automation 계정과 연결된 Azure Log Analytics 작업 영역에 Log Analytics 에이전트를 설치하고 등록한 온-프레미스 서버에 적용됩니다.
 
 1. Automation 계정의 **업데이트 관리** 페이지로 이동합니다.
-1. **업데이트 관리** 페이지에서 **컴퓨터를 관리하려면 클릭** 링크를 사용하여 온-프레미스 서버에 대한 업데이트 관리를 활성화합니다.
+1. **업데이트 관리** 페이지에서 **컴퓨터를 관리하려면 클릭** 링크를 사용하여 온-프레미스 서버에 대한 업데이트 관리를 사용하도록 설정합니다.
 
    > **참고:** 인벤토리 및 변경 내용 추적 솔루션과 마찬가지로, 이 옵션은 인벤토리, 변경 내용 추적 및 업데이트 관리 솔루션을 호스트하는 Azure Automation 계정과 연결된 Azure Log Analytics 작업 영역에 Log Analytics 에이전트를 설치하고 등록한 온-프레미스 서버에 적용됩니다.
 
@@ -331,7 +331,7 @@ Windows Server를 실행하는 Azure VM에 대한 이점을 포함하여 하이�
 
    > **참고:** Azure 및 온-프레미스 VM을 나타내는 항목이 **인벤토리** 페이지에 표시되기까지 몇 분 정도 걸릴 수 있습니다.
 
-   > **참고:** **az801l02-vm0** 에서 **모니터링 에이전트** 열에 **설치되지 않음** 상태를 보고하는 경우 **az801l02-vm0** 링크를 선택합니다. **리소스 상태(미리 보기)** 페이지에서 **권장 사항** 을 검하고 **가상 머신에 Log Analytics 에이전트를 설치해야 함** 항목을 선택합니다. **가상 머신에 Log Analytics 에이전트를 설치해야 함** 페이지에서 **수정** 을 선택합니다. **리소스 수정** 페이지의 **작업 영역 ID** 드롭다운 목록에서 클라우드용 Defender에서 만든 기본 작업 영역을 선택한 후 **1개 리소스 수정** 을 선택합니다. 
+   > **참고:** **az801l02-vm0** 에서 **모니터링 에이전트** 열에 **설치되지 않음** 상태를 보고하는 경우 **az801l02-vm0** 링크를 선택합니다. **리소스 상태(미리 보기)** 페이지에서 **권장 사항** 을 검토하고 **가상 머신에 Log Analytics 에이전트를 설치해야 함** 항목을 선택합니다. **가상 머신에 Log Analytics 에이전트를 설치해야 함** 페이지에서 **수정** 을 선택합니다. **리소스 수정** 페이지의 **작업 영역 ID** 드롭다운 목록에서 클라우드용 Defender에서 만든 기본 작업 영역을 선택한 후 **1개 리소스 수정** 을 선택합니다. 
 
 1. **az801l02-vm0** 의 **리소스 상태(미리 보기)** 페이지로 이동하고 **권장 사항** 을 검토합니다.
 1. **SEA-SVR2** 의 **리소스 상태(미리 보기)** 페이지로 이동하고 **권장 사항** 을 검토합니다.

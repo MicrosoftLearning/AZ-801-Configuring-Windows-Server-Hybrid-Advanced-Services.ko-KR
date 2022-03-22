@@ -23,7 +23,7 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
     - 서버: 온-프레미스 서버를 평가하고 Azure 가상 머신으로 마이그레이션합니다.
     - 데이터베이스: 온-프레미스 데이터베이스를 평가하고 Azure SQL Database 또는 SQL Managed Instance로 마이그레이션합니다.
     - 웹 애플리케이션: Azure App Service Migration Assistant를 사용하여 온-프레미스 웹 애플리케이션을 평가하고 Azure App Service로 마이그레이션합니다.
-    - 가상 데스크톱: 온-프레미스 VDI(가상 데스크톱 인프라)를 평가하고 Azure의 Windows Virtual Desktop으로 마이그레이션합니다.
+    - 가상 데스크톱: 온-프레미스 VDI(Virtual Desktop Infrastructure)를 평가하고 Azure의 Windows Virtual Desktop으로 마이그레이션합니다.
     - Data: Azure Data Box 제품을 사용하여 대량의 데이터를 Azure로 빠르고 비용 효율적으로 마이그레이션합니다.
 
 데이터베이스, 웹앱, 가상 데스크톱은 마이그레이션 이니셔티브의 다음 단계 범위 내에 있지만 Adatum Enterprise Architecture 팀은 온-프레미스 Hyper-V 가상 머신을 Azure VM으로 마이그레이션하기 위해 Azure Migrate의 사용을 평가하는 것으로 시작하려고 합니다.
@@ -51,7 +51,7 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
    - 암호: **Pa55w.rd**
    - 도메인: **CONTOSO**
 
-이 랩에서는 사용 가능한 VM 환경과 Azure 구독을 사용합니다. 랩을 시작하기 전에 구독에서 소유자 역할이 있는 Azure 구독 및 사용자 계정이 있는지 확인하세요.
+이 랩에서는 사용 가능한 VM 환경과 Azure 구독을 사용합니다. 랩을 시작하기 전에 구독에서 Owner 역할이 있는 Azure 구독 및 사용자 계정이 있는지 확인하세요.
 
 ## <a name="exercise-1-prepare-the-lab-environment"></a>연습 1: 랩 환경 준비
 
@@ -64,19 +64,19 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
 #### <a name="task-1-deploy-an-azure-vm-by-using-an-azure-resource-manager-quickstart-template"></a>작업 1: Azure Resource Manager 빠른 시작 템플릿을 사용하여 Azure VM 배포
 
 1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고, [301-nested-vms-in-virtual-network Azure QuickStart 템플릿](https://github.com/az140mp/azure-quickstart-templates/tree/master/demos/nested-vms-in-virtual-network)을 찾아보고 **Azure에 배포** 를 선택합니다. 템플릿에서 만든 리소스 목록 뒤에 있는 `README.md` 파일에 **Azure에 배포** 단추가 있습니다.
-1. 메시지가 나타나면 Azure Portal에서 이 랩에서 사용할 구독에서 소유자 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
+1. 메시지가 나타나면 Azure Portal에서 이 랩에서 사용할 구독에서 Owner 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
 1. Azure Portal의 **중첩된 VM이 있는 Hyper-V 호스트 가상 머신** 페이지에서 다음 설정을 사용하여 배포를 수행합니다(다른 설정은 기본값으로 유지)
 
    | 설정 | 값 | 
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | 새 리소스 그룹 **AZ801-L0701-RG** 의 이름 |
-   | 지역 | Azure VM을 프로비저닝할 수 있는 Azure 지역의 이름 |
-   | Virtual Network 이름 | **az801l07a-hv-vnet** |
-   | Host Network Interface1Name | **az801l07a-hv-vm-nic1** |
-   | Host Network Interface2Name | **az801l07a-hv-vm-nic2** |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0701-RG** 의 이름 |
+   | 지역 | Azure VM을 프로비전할 수 있는 Azure 지역의 이름 |
+   | 가상 네트워크 이름 | **az801l07a-hv-vnet** |
+   | 호스트 네트워크 Interface1Name | **az801l07a-hv-vm-nic1** |
+   | 호스트 네트워크 Interface2Name | **az801l07a-hv-vm-nic2** |
    | 호스트 가상 머신 이름 | **az801l07a-hv-vm** |
-   | 호스트 관리자 사용자 이름 | **학생** |
+   | 호스트 관리자 사용자 이름 | **Student** |
    | 호스트 관리자 암호 | **Pa55w.rd1234** |
 
    > **참고**: 배포가 완료될 때까지 기다리세요. 배포는 10분 정도 걸릴 수 있습니다.
@@ -103,8 +103,8 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
 
    | 설정 | 값 | 
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | **AZ801-L0701-RG** |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | **AZ801-L0701-RG** |
    | 이름 | **az801l07a-bastion** |
    | 지역 | 이 연습의 이전 작업에서 리소스를 배포한 동일한 Azure 지역 |
    | 계층 | **기본** |
@@ -124,7 +124,7 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
 
    | 설정 | 값 | 
    | --- | --- |
-   | 사용자 이름 |**학생** |
+   | 사용자 이름 |**Student** |
    | 암호 |**Pa55w.rd1234** |
 
 1. **az801l07a-hv-vm** 에 대한 원격 데스크톱 세션 내의 **서버 관리자** 창에서 **IE 보안 강화 구성** 을 사용하지 않도록 설정합니다.
@@ -137,12 +137,12 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
    | 이름 | **az801l07a-vm1** | 
    | 가상 컴퓨터를 다른 위치에 저장 | 선택 | 
    | 위치 | **F:\VMs** |
-   | Generation | **1** |
+   | 세대 | **1** |
    | 메모리 | static set to **2048** MB |
    | 연결 | **NestedSwitch** |
    | 가상 하드 디스크 | **F:\VHDs** 폴더에 다운로드된 VHD 파일 |
 
-1. 새로 프로비저닝된 VM을 시작하고 가상 머신 연결을 사용하여 연결합니다. 
+1. 새로 프로비전된 VM을 시작하고 가상 머신 연결을 사용하여 연결합니다. 
 1. **가상 머신 연결** 창에서 운영 체제를 초기화합니다. 
 1. 기본 제공 관리자 계정의 암호를 **Pa55w.rd** 로 설정합니다. 
 1. **가상 머신 연결** 창에서 **az801l07a-vm1** 에 로그인합니다. 
@@ -191,15 +191,15 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
 
 #### <a name="task-2-create-an-azure-migrate-project"></a>작업 2: Azure Migrate 프로젝트 만들기
 
-1. **az801l07a-hv-vm** 에 대한 원격 데스크톱 세션 내의 브라우저 창에서 [Azure portal](https://portal.azure.com)로 이동하여 이 랩에서 사용 중인 구독에서 소유자 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
+1. **az801l07a-hv-vm** 에 대한 원격 데스크톱 세션 내의 브라우저 창에서 [Azure portal](https://portal.azure.com)로 이동하여 이 랩에서 사용 중인 구독에서 Owner 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
 1. Azure Portal에서 **Azure Migrate** 페이지를 찾아보고 다음 설정을 사용하여 프로젝트를 만듭니다(다른 설정은 기본값으로 유지)
 
    | 설정 | 값 | 
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | 새 리소스 그룹 **AZ801-L0702-RG** 의 이름 |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0702-RG** 의 이름 |
    | 프로젝트 마이그레이션 | **az801l07a-migrate-project** |
-   | Geography | 국가 또는 지리적 지역의 이름 |
+   | 지리 | 국가 또는 지리적 지역의 이름 |
 
 #### <a name="task-3-implement-the-target-azure-environment"></a>작업 3: 대상 Azure 환경 구현
 
@@ -207,8 +207,8 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
 
    | 설정 | 값 |
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | 새 리소스 그룹 **AZ801-L0703-RG** 의 이름 |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0703-RG** 의 이름 |
    | 이름 | **az801l07a-migration-vnet** |
    | 지역 | 이 랩의 앞부분에서 가상 머신을 배포한 Azure 지역의 이름 |
    | 서브넷 이름 | **subnet0** |
@@ -218,8 +218,8 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
 
    | 설정 | 값 |
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | **AZ801-L0703-RG** |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | **AZ801-L0703-RG** |
    | 이름 | **az801l07a-test-vnet** |
    | 지역 | 이 랩의 앞부분에서 가상 머신을 배포한 Azure 지역의 이름 |
    | 설정 | 값 |
@@ -231,14 +231,14 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
 
    | 설정 | 값 | 
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | **AZ801-L0703-RG** |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | **AZ801-L0703-RG** |
    | 스토리지 계정 이름 | 문자 및 숫자로 구성되고 3~24자 사이의 전역적으로 고유한 이름 |
    | 위치 | 이 작업 앞부분에서 가상 네트워크를 만든 Azure 지역의 이름 |
    | 성능 | **Standard** |
    | 중복 | **LRS(로컬 중복 스토리지)** |
-   | Blob에 일시 삭제를 사용하도록 설정 | disabled |
-   | 컨테이너에 대해 일시 삭제 사용 | disabled |
+   | Blob에 일시 삭제를 사용하도록 설정 | 사용 안 함 |
+   | 컨테이너에 대해 일시 삭제 사용 | 사용 안 함 |
 
 ## <a name="exercise-3-assess-hyper-v-for-migration-by-using-azure-migrate"></a>연습 3: Azure Migrate를 사용하여 마이그레이션에 대한 Hyper-V 평가
   
@@ -281,7 +281,7 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
    | 설정 | 값 | 
    | --- | --- |
    | 친숙한 이름 | **az801l07ahvcred** | 
-   | 사용자 이름 | **학생** |
+   | 사용자 이름 | **Student** |
    | 암호 | **Pa55w.rd1234** |
 
 1. 브라우저 창 내에 있는 **어플라이언스 구성 관리자** 페이지의 **Hyper-V 호스트/클러스터 세부 정보 제공** 섹션에서 **Hyper-V 호스트/클러스터** 에 검색 원본 집합을 추가하고, **식별 이름** 을 **az801l07ahvcred** 로 설정하고, **IP 주소/FQDN** 을 **10.0.2.1** 로 설정합니다.
@@ -376,10 +376,10 @@ Azure Migrate는 다음과 같은 기능을 제공합니다.
 
    | 설정 | 값 | 
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | **AZ801-L0703-RG** |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | **AZ801-L0703-RG** |
    | 복제 스토리지 계정 | 이 랩의 앞부분에서 만든 스토리지 계정의 이름 | 
-   | Virtual Network | **az801l07a-migration-vnet** |
+   | 가상 네트워크 | **az801l07a-migration-vnet** |
    | 서브넷 | **subnet0** |
 
 1. **복제** 페이지의 **컴퓨팅** 탭에서 **Azure VM 크기** 드롭다운 목록에서 **Standard_D2s_v3** 이 선택되어 있는지 확인합니다. **OS 유형** 드롭다운 목록에서 **Windows** 를 선택합니다.

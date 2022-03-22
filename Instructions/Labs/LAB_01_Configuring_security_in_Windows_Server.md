@@ -146,7 +146,7 @@ Pass-the-Hash 및 Pass-the-Ticket 자격 증명 도난으로부터 보호하기 
 이 연습의 주요 작업은 다음과 같습니다.
 
 1. LAPS(로컬 관리자 암호 솔루션)를 구현하기 위한 컴퓨터 계정을 준비합니다.
-1. LAPS용 AD DS(Active Directory)를 준비합니다.
+1. LAPS용 Active Directory(AD DS)를 준비합니다.
 1. LAPS 클라이언트 쪽 확장을 배포합니다.
 1. LAPS를 확인합니다.
 

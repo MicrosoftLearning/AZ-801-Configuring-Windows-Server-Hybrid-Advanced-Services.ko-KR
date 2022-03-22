@@ -17,14 +17,14 @@ ms.locfileid: "137907144"
 #### <a name="task-1-create-an-azure-site-recovery-vault"></a>작업 1: Azure 사이트 복구 자격 증명 모음 만들기
 
 1. **SEA-SVR2** 에 연결하고 필요한 경우 **Pa55w.rd** 암호를 이용해 **CONTOSO\\Administrator** 로 로그인합니다.
-1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[Azure Portal](https://portal.azure.com)** 로 이동한 후 이 랩에서 사용할 구독에서 소유자 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
+1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[Azure Portal](https://portal.azure.com)** 로 이동한 후 이 랩에서 사용할 구독에서 Owner 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
 1. Azure Portal에서 도구 모음에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자에서 **Recovery Services 자격 증명 모음** 을 검색하고 선택한 다음, **Recovery Services 자격 증명 모음** 페이지에서 **+ 만들기** 를 선택합니다.
 1. **Recovery Services 자격 증명 모음 만들기** 페이지의 **기본 사항** 탭에서 다음 설정을 지정하고(다른 설정은 기본값으로 둠) **검토 + 만들기** 를 선택합니다.
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용할 Azure 구독의 이름|
-   |Resource group|새 리소스 그룹 **AZ801-L0501-RG** 의 이름|
+   |구독|이 랩에서 사용할 Azure 구독의 이름|
+   |리소스 그룹|새 리소스 그룹 **AZ801-L0501-RG** 의 이름|
    |자격 증명 모음 이름|**az801l05a-rsvault**|
    |위치|Azure Recovery Services 자격 증명 모음을 만들 수 있고 랩 환경의 위치에 가까운 Azure 지역의 이름|
 
@@ -32,7 +32,7 @@ ms.locfileid: "137907144"
 
    > **참고:** Recovery Services 자격 증명 모음이 프로비전될 때까지 기다립니다. 이 작업은 2분 정도 걸립니다.
 
-   > **참고:** 기본적으로 자격 증명 모음의 스토리지 복제 유형은 GRS(지역 중복)로 설정되고 일시 삭제 및 보안 기능이 사용하도록 설정됩니다. 프로비전 해제를 간소화하기 위해 랩에서 이러한 설정을 변경하지만 프로덕션 환경에서 활성화해야 합니다.
+   > **참고:** 기본적으로 자격 증명 모음의 스토리지 복제 유형은 지역 중복(GRS)으로 설정되고 일시 삭제 및 보안 기능이 사용하도록 설정됩니다. 프로비전 해제를 간소화하기 위해 랩에서 이러한 설정을 변경하지만 프로덕션 환경에서 활성화해야 합니다.
 
 #### <a name="task-2-configure-the-azure-site-recovery-vault"></a>작업 2: Azure Site Recovery 자격 증명 모음 구성
 
@@ -58,8 +58,8 @@ ms.locfileid: "137907144"
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
-   |Resource group|새 리소스 그룹 **AZ801-L0502-RG** 의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+   |리소스 그룹|새 리소스 그룹 **AZ801-L0502-RG** 의 이름|
    |이름|**az801l05-dr-vnet**|
    |지역|이 랩의 앞부분에서 Recovery Services 자격 증명 모음을 배포한 Azure 지역의 이름|
 
@@ -78,8 +78,8 @@ ms.locfileid: "137907144"
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
-   |Resource group|**AZ801-L0502-RG**|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+   |리소스 그룹|**AZ801-L0502-RG**|
    |이름|**az801l05-test-vnet**|
    |지역|이 랩의 앞부분에서 Recovery Services 자격 증명 모음을 배포한 Azure 지역의 이름|
 
@@ -101,8 +101,8 @@ ms.locfileid: "137907144"
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
-   |Resource group|**AZ801-L0502-RG**|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+   |리소스 그룹|**AZ801-L0502-RG**|
    |스토리지 계정 이름|문자 및 숫자로 구성되고 문자로 시작하는 3~24자 사이의 전역적으로 고유한 이름|
    |지역|이 랩의 앞부분에서 Recovery Services 자격 증명 모음을 배포한 Azure 지역의 이름|
    |성능|표준|
@@ -167,7 +167,7 @@ ms.locfileid: "137907144"
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |사후 장애 조치(failover) 리소스 그룹|**AZ801-L0502-RG**|
    |사후 장애 조치(failover) 배포 모델|**Resource Manager**|
    |스토리지 계정|이 연습의 첫 번째 작업에서 만든 스토리지 계정의 이름|

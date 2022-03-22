@@ -6,7 +6,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 01/28/2022
 ms.locfileid: "137907156"
 ---
-# <a name="az-801t00-configuring-windows-server-hybrid-advanced-services"></a>AZ-801T00: Windows Server Hybrid 고급 서비스 구성
+# <a name="az-801t00-configuring-windows-server-hybrid-advanced-services"></a>AZ-801T00: Windows Server 하이브리드 고급 서비스 구성
 
 - **[최신 학생 핸드북 및 AllFiles 콘텐츠 다운로드](../../releases/latest)**
 - **MCT이신가요?** - [MCT를 위한 GitHub 사용자 가이드](https://microsoftlearning.github.io/MCT-User-Guide/)를 살펴보세요.

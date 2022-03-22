@@ -17,7 +17,7 @@ ms.locfileid: "137907164"
 #### <a name="task-1-deploy-an-azure-virtual-machine"></a>작업 1: Azure 가상 머신 배포
 
 1. **SEA-SVR2** 에 연결하고 필요한 경우 **Pa55w.rd** 암호를 이용해 **CONTOSO\\Administrator** 로 로그인합니다.
-1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[Azure Portal](https://portal.azure.com)** 로 이동한 후 이 랩에서 사용할 구독에서 소유자 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
+1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[Azure Portal](https://portal.azure.com)** 로 이동한 후 이 랩에서 사용할 구독에서 Owner 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
 1. **SEA-SVR2** 의 Azure Portal을 표시하는 Microsoft Edge 창에서 Azure Portal에서 Cloud Shell 단추를 선택하여 Azure Cloud Shell 창을 엽니다.
 1. **Bash** 와 **PowerShell** 중 선택하라는 메시지가 표시되면 **PowerShell** 을 선택합니다.
 
@@ -65,8 +65,8 @@ ms.locfileid: "137907164"
 
    | 설정 | 값 |
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | 새 리소스 그룹 **AZ801-L0902-RG** 의 이름 |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0902-RG** 의 이름 |
    | Log Analytics 작업 영역 | 고유 이름 |
    | 지역 | 이전 작업에서 가상 머신을 배포한 Azure 지역의 이름 |
 
@@ -125,8 +125,8 @@ ms.locfileid: "137907164"
 
    | 설정 | 값 |
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | **AZ801-L0901-RG** |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | **AZ801-L0901-RG** |
    | 리소스 그룹 지역 | 이전 연습에서 가상 머신을 배포한 Azure 지역의 이름 |
    | Log Analytics 작업 영역 | 이전 연습에서 만든 작업 영역의 이름 |
    | Azure Arc 사용 | 선택 |
@@ -238,8 +238,8 @@ ms.locfileid: "137907164"
 
    | 설정 | 값 |
    | --- | --- |
-   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | Resource group | **AZ801-L0902-RG** |
+   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | 리소스 그룹 | **AZ801-L0902-RG** |
    | 작업 그룹 이름 | **az801l09-ag1** |
    | 표시 이름 | **az801l09-ag1** |
 
@@ -253,7 +253,7 @@ ms.locfileid: "137907164"
    | --- | --- |
    | 경고 규칙 이름 | **CPU Percentage above the test threshold** |
    | 설명 | **테스트 임계값을 초과하는 CPU 백분율** |
-   | Resource group | **AZ801-L0902-RG** |
+   | 리소스 그룹 | **AZ801-L0902-RG** |
    | 심각도 | **Sev 3** |
    | 규칙을 만들면 바로 사용 | **예** |
 
@@ -339,7 +339,7 @@ ms.locfileid: "137907164"
 
 1. **SEA-SVR2** 의 Azure Portal을 표시하는 Microsoft Edge 창에서 **Cloud Shell** 아이콘을 선택하여 Cloud Shell 창을 엽니다.
 
-#### <a name="task-2-delete-all-azure-resources-provisioned-in-the-lab"></a>작업 2: 랩에서 프로비저닝된 모든 Azure 리소스 삭제
+#### <a name="task-2-delete-all-azure-resources-provisioned-in-the-lab"></a>작업 2: 랩에서 프로비전된 모든 Azure 리소스 삭제
 
 1. Cloud Shell 창에서 다음 명령을 실행하여 이 랩에서 만든 리소스 그룹을 모두 나열합니다.
 
