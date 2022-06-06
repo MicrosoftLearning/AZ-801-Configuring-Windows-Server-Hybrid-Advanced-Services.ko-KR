@@ -2,12 +2,12 @@
 lab:
   title: '랩: 하이브리드 시나리오에서 보안 솔루션 구현'
   module: 'Module 2: Implementing Security Solutions in Hybrid Scenarios'
-ms.openlocfilehash: 33338f32e18797a64f2b6b18dc6d84f559f62276
-ms.sourcegitcommit: 9a51ea796ef3806ab9e7ec1ff75034b2f929ed2a
+ms.openlocfilehash: 475c539c6792c3a50a41c27ec5c293e895f0f07a
+ms.sourcegitcommit: fb0d39e25bc0fe182037587b772d217db126d3bb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/28/2022
-ms.locfileid: "137907131"
+ms.lasthandoff: 05/07/2022
+ms.locfileid: "144812993"
 ---
 # <a name="lab-implementing-security-solutions-in-hybrid-scenarios"></a>랩: 하이브리드 시나리오에서 보안 솔루션 구현
 
@@ -60,7 +60,7 @@ ms.locfileid: "137907131"
 
    | 설정 | 값 |
    | --- | --- |
-   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
    | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0201-RG** 의 이름 |
    | Log Analytics 작업 영역 | 고유한 이름 |
    | 지역 | 이전 작업에서 가상 머신을 배포한 Azure 지역의 이름 |
@@ -73,7 +73,7 @@ ms.locfileid: "137907131"
 
    | 설정 | 값 |
    | --- | --- |
-   | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
+   | Subscription | 이 랩에서 사용 중인 Azure 구독의 이름 |
    | 리소스 그룹 | **AZ801-L0201-RG** |
    | 이름 | 고유한 이름 |
    | 지역 | [작업 영역 매핑 설명서](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings)에 따라 결정되는 Azure 지역의 이름 |
@@ -131,8 +131,7 @@ ms.locfileid: "137907131"
    - 이전 연습에서 만든 Log Analytics 작업 영역을 활용하여 **Azure VM용 Log Analytics 에이전트** 를 사용하도록 설정합니다.
    - 이전 연습에서 만든 Log Analytics 작업 영역을 활용하여 **Azure Arc Machine용 Log Analytics 에이전트(미리 보기)** 를 사용하도록 설정합니다.
    - **Microsoft 위협 및 취약성 관리** 옵션을 사용하여 **컴퓨터에 대한 취약성 평가** 를 사용하도록 설정합니다.
-   - **게스트 구성 에이전트(미리 보기)** 를 사용하도록 설정합니다.
-   - **Microsoft Dependency Agent(미리 보기)** 를 사용하도록 설정합니다.
+
 
 1. 클라우드용 Defender의 **클라우드 환경 설정** 페이지로 이동합니다.
 1. **환경 설정** 페이지에서 Azure 구독을 나타내는 항목을 확장하고 이전 연습에서 만든 Log Analytics 작업 영역을 나타내는 항목을 검토합니다.
@@ -219,7 +218,7 @@ Windows Server를 실행하는 Azure VM에 대한 이점을 포함하여 하이�
 
 이 작업에서는 Log Analytics 에이전트의 무인 설치를 수행합니다.
 
-1. **SEA-ADM1** 에서 관리자 권한으로 **Windows PowerShell** 을 시작합니다.
+1. **SEA-SVR2** 에서 관리자 권한으로 **Windows PowerShell** 을 시작합니다.
 1. **MMASetup-AMD64.exe** 파일의 콘텐츠를 추출하려면 **Windows PowerShell** 콘솔에서 다음 명령을 실행합니다.
     
    ```powershell

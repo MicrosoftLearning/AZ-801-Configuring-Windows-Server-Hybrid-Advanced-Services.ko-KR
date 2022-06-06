@@ -3,12 +3,12 @@ lab:
   title: '랩: 장애 조치(failover) 클러스터링 구현'
   type: Answer Key
   module: 'Module 3: High availability in Windows Server'
-ms.openlocfilehash: 0aebdfd4b42079ec2266db4724a3087a3623723f
-ms.sourcegitcommit: 9a51ea796ef3806ab9e7ec1ff75034b2f929ed2a
+ms.openlocfilehash: 9f61985bbfde16e2653daff8032ebfb785cac219
+ms.sourcegitcommit: fb0d39e25bc0fe182037587b772d217db126d3bb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/28/2022
-ms.locfileid: "137907122"
+ms.lasthandoff: 05/07/2022
+ms.locfileid: "144813005"
 ---
 # <a name="lab-answer-key-implementing-failover-clustering"></a>랩 응답 키: 장애 조치 클러스터링 구현
 
@@ -138,7 +138,7 @@ ms.locfileid: "137907122"
    Format-Volume -DriveLetter G -FileSystem NTFS
    ```
 
-   > **참고:** 각 명령이 성공적으로 완료되었는지 확인합니다.
+   > **참고:** 명령을 실행하기 전에 디스크 번호가 이전 명령 출력과 일치하는지 확인합니다. 각 명령이 성공적으로 완료되었는지 확인합니다.
 
 #### <a name="task-3-create-a-failover-cluster"></a>작업 3: 장애 조치 클러스터 만들기
 
@@ -215,7 +215,7 @@ ms.locfileid: "137907122"
 1. **SEA-SVR2** 에서 파일 탐색기를 열고 **\\\\FSCluster\\Docs** 폴더를 찾아봅니다.
 1. **Docs** 폴더 내에서 폴더의 빈 영역의 상황에 맞는 메뉴를 마우스 오른쪽 단추로 클릭하거나 액세스하고 **새로 만들기** 를 선택한 다음, **텍스트 문서** 를 선택합니다.
 1. 문서의 기본 이름을 **New Text Document.txt** 로 그대로 사용하려면 Enter 키를 누릅니다.
-1. **SEA-SVR2** 에서 **장애 조치(failover) 클러스터 관리자** 콘솔로 전환하고, **FSCluster** 의 상황에 맞는 메뉴를 마우스 오른쪽 단추로 클릭하거나 액세스하고, **이동** 을 선택하고, **노드 선택** 을 선택한 다음, **확인** 을 선택합니다.
+1. **SEA-SVR2** 에서 **장애 조치(failover) 클러스터 관리자** 콘솔로 전환하고, **FSCluster** 의 상황에 맞는 메뉴를 마우스 오른쪽 단추로 클릭하거나 액세스하고, **이동** 을 선택하고, **노드 선택** 을 선택하고, **SEA-SVR2** 를 선택한 다음, **확인** 을 선택합니다.
 1. **SEA-SVR2** 에서 파일 탐색기로 다시 전환하고 **\\\\FSCluster\\Docs** 폴더의 콘텐츠에 계속 액세스할 수 있는지 확인합니다.
 
 #### <a name="task-2-validate-the-failover-and-quorum-configuration-for-the-file-server-role"></a>작업 2: 파일 서버 역할에 대한 장애 조치 및 쿼럼 구성의 유효성 검사

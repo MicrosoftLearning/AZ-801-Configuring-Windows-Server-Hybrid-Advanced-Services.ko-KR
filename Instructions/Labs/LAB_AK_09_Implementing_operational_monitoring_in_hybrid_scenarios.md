@@ -3,12 +3,12 @@ lab:
   title: '랩: 하이브리드 시나리오에서 운영 모니터링 구현'
   type: Answer Key
   module: Module 9 - Implementing operational monitoring in hybrid scenarios
-ms.openlocfilehash: a0a3474c4db7bcebb3668e6728c3c4e002fc7487
-ms.sourcegitcommit: 9a51ea796ef3806ab9e7ec1ff75034b2f929ed2a
+ms.openlocfilehash: b68d5e88d5a550967a2cba67b57465993299ee22
+ms.sourcegitcommit: fb0d39e25bc0fe182037587b772d217db126d3bb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/28/2022
-ms.locfileid: "137907164"
+ms.lasthandoff: 05/07/2022
+ms.locfileid: "144813011"
 ---
 # <a name="lab-answer-key-implementing-operational-monitoring-in-hybrid-scenarios"></a>랩 응답 키: 하이브리드 시나리오에서 운영 모니터링 구현
 
@@ -19,7 +19,7 @@ ms.locfileid: "137907164"
 1. **SEA-SVR2** 에 연결하고 필요한 경우 **Pa55w.rd** 암호를 이용해 **CONTOSO\\Administrator** 로 로그인합니다.
 1. **SEA-SVR2** 에서 Microsoft Edge를 시작하고 **[Azure Portal](https://portal.azure.com)** 로 이동한 후 이 랩에서 사용할 구독에서 Owner 역할이 있는 사용자 계정의 자격 증명을 사용하여 로그인합니다.
 1. **SEA-SVR2** 의 Azure Portal을 표시하는 Microsoft Edge 창에서 Azure Portal에서 Cloud Shell 단추를 선택하여 Azure Cloud Shell 창을 엽니다.
-1. **Bash** 와 **PowerShell** 중 선택하라는 메시지가 표시되면 **PowerShell** 을 선택합니다.
+1. **Bash** 와 **PowerShell** 중에서 선택하라는 메시지가 표시되면 **PowerShell** 을 선택합니다.
 
    > **참고:** Cloud Shell을 처음 시작하는 경우 **탑재된 스토리지가 없음** 메시지가 표시되면 이 랩에서 사용 중인 구독을 선택한 후 **스토리지 만들기** 를 선택합니다.
 
@@ -67,7 +67,7 @@ ms.locfileid: "137907164"
    | --- | --- |
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
    | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0902-RG** 의 이름 |
-   | Log Analytics 작업 영역 | 고유 이름 |
+   | Log Analytics 작업 영역 | 고유한 이름 |
    | 지역 | 이전 작업에서 가상 머신을 배포한 Azure 지역의 이름 |
 
    >**참고**: 이전 작업에서 가상 머신을 배포한 지역과 같은 지역을 지정해야 합니다.
@@ -94,6 +94,8 @@ ms.locfileid: "137907164"
    ```
 
    > **참고**: 설치가 완료될 때까지 기다리세요. 이 작업은 2분 정도 걸립니다.
+
+   > **참고**: Windows Admin Center 설치를 완료하면 ERR_CONNECTION_REFUSED 오류가 나타날 수 있습니다. 이 경우 계속 진행하기 전에 SEA-SVR2를 재시작합니다.
 
 1. **SEA-SVR2** 에서 Microsoft Edge를 시작한 후 **https://SEA-SVR2.contoso.com** 으로 이동합니다. 
 1. 메시지가 표시되면 **Windows 보안** 대화 상자에 다음 자격 증명을 입력한 후 **확인** 을 선택합니다.
@@ -126,7 +128,7 @@ ms.locfileid: "137907164"
    | 설정 | 값 |
    | --- | --- |
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | 리소스 그룹 | **AZ801-L0901-RG** |
+   | 리소스 그룹 | **AZ801-L0902-RG** |
    | 리소스 그룹 지역 | 이전 연습에서 가상 머신을 배포한 Azure 지역의 이름 |
    | Log Analytics 작업 영역 | 이전 연습에서 만든 작업 영역의 이름 |
    | Azure Arc 사용 | 선택 |
@@ -196,9 +198,8 @@ ms.locfileid: "137907164"
 
    >**참고**: 이 설정은 Azure VM Insights 기능을 제공합니다. VM Insights는 Azure VM과 Windows 또는 Linux를 실행하는 온-프레미스 컴퓨터의 성능과 상태 모니터링을 지원하는 Azure Monitor 솔루션입니다.
 
-1. **SEA-SVR2** 의 Azure Portal에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자의 도구 모음에서 **모니터** 를 검색하여 선택한 후 **모니터 \| 개요** 페이지의 **인사이트** 에서 **가상 머신** 을 선택합니다.
-1. **모니터 \| 가상 머신** 페이지에서 **성능** 탭을 선택한 후 **업그레이드** 를 선택합니다.
-1. **업그레이드** 창에서 **업그레이드** 를 선택합니다.
+1. **SEA-SVR2** 의 Azure Portal에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자의 도구 모음에서 **모니터** 를 검색하여 선택한 후 **모니터 \| 개요** 페이지의 **인사이트** 에서 **가상 머신 인사이트** 를 선택합니다.
+1. **모니터 \| Virtual Machines** 페이지에서 **성능** 탭을 선택한 후 **지금 시도** 를 선택합니다.
 1. **모니터 \| 가상 머신** 페이지에서 **맵** 탭을 선택한 후 **지금 사용해 보기** 를 선택합니다.
 1. **적용 범위 관리** 페이지에서 **작업 영역 구성** 을 선택합니다.
 1. **Azure Monitor** 페이지의 **Log Analytics 작업 영역 선택** 드롭다운 메뉴에서 이 랩의 앞부분에서 만든 작업 영역을 선택한 후 **구성** 을 선택합니다.
@@ -233,7 +234,7 @@ ms.locfileid: "137907164"
    | 집계 세분성(기간) | **1분** |
    | 평가 빈도 | **1분마다** |
 
-1. **경고 규칙 만들기** 페이지의 **작업** 탭에서 **작업 그룹 추가** 를 선택한 후 **+ 작업 그룹 만들기** 단추를 선택합니다.
+1. **경고 규칙 만들기** 페이지의 **작업** 탭에서 **+ 작업 그룹 생성** 단추를 선택합니다.
 1. **작업 그룹 만들기** 페이지의 **기본 사항** 탭에서 다음 설정을 지정하고(다른 설정은 기본값으로 둠) **다음: 알림 >** 을 선택합니다.
 
    | 설정 | 값 |

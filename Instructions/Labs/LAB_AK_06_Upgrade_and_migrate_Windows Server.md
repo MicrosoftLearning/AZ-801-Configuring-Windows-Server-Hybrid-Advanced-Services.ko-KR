@@ -3,12 +3,12 @@ lab:
   title: '랩: Windows Server에서 업그레이드 및 마이그레이션'
   type: Answer Key
   module: Module 6 - Upgrade and migrate in Windows Server
-ms.openlocfilehash: b1415ed88b8b97eabfd7849ebabbe291ed383805
-ms.sourcegitcommit: 9a51ea796ef3806ab9e7ec1ff75034b2f929ed2a
+ms.openlocfilehash: 7d666444d9a0be48b6f398474a05a60a0902fee0
+ms.sourcegitcommit: fb0d39e25bc0fe182037587b772d217db126d3bb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/28/2022
-ms.locfileid: "137907140"
+ms.lasthandoff: 05/07/2022
+ms.locfileid: "144812996"
 ---
 # <a name="lab-answer-key-upgrade-and-migrate-in-windows-server"></a>랩 해답: Windows Server에서 업그레이드 및 마이그레이션
 
@@ -57,10 +57,10 @@ ms.locfileid: "137907140"
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
    | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
    | 지역 | Azure VM을 프로비전할 수 있는 Azure 지역의 이름 |
-   | 관리자 사용자 이름 | **Student** |
+   | 관리자 사용자 이름 | **학생** |
    | 관리자 암호 | **Pa55w.rd1234** |
    | 도메인 이름 | **contoso.com** |
-   | Vm 크기 | **표준 D2s v3** |
+   | Vm 크기 | **Standard_DS2_v2** |
    | 가상 컴퓨터 이름 | **az801l06a-dc1** |
    | Virtual Network 이름 | **az801l06a-vnet** |
    | 가상 네트워크 주소 범위 | **10.6.0.0/16** |
@@ -134,7 +134,7 @@ ms.locfileid: "137907140"
    | 이미지 | **Windows Server 2022 Datacenter - Gen2** |
    | Azure Spot 인스턴스 | **아니요** |
    | 크기 | **표준 D2s v3** |
-   | 사용자 이름 | **Student** |
+   | 사용자 이름 | **학생** |
    | 암호 | **Pa55w.rd1234** |
    | 공용 인바운드 포트 | **없음** |
    | 기존 Windows Server 라이선스를 사용하시겠습니까? | **아니요** |
@@ -197,7 +197,7 @@ ms.locfileid: "137907140"
 
    | 설정 | 값 | 
    | --- | --- |
-   | 사용자 이름 |**Student** |
+   | 사용자 이름 |**학생** |
    | 암호 |**Pa55w.rd1234** |
 
 1. **az801l06a-dc2** 에 대한 원격 데스크톱 세션 내에서 **시작** 을 선택한 다음, **Windows PowerShell** 을 선택합니다.
@@ -242,7 +242,7 @@ ms.locfileid: "137907140"
 
    | 설정 | 값 | 
    | --- | --- |
-   | 사용자 이름 |**Student** |
+   | 사용자 이름 |**학생** |
    | 암호 |**Pa55w.rd1234** |
 
 1. **az801l06a-dc2** 에 대한 원격 데스크톱 세션 내에서 **서버 관리자** 창이 열릴 때까지 기다렸다가 로컬로 설치된 역할 목록에 **AD DS** 및 **DNS** 가 포함되어 있는지 확인합니다.
