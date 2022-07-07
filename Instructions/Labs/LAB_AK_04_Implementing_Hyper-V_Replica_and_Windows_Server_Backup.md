@@ -3,12 +3,12 @@ lab:
   title: '랩: Hyper-V 복제본 및 Windows Server 백업 구현'
   type: Answer Key
   module: 'Module 4: Disaster Recovery in Windows Server'
-ms.openlocfilehash: 65c442ed6c2de7650e5ab4888fb080d38e8bc5d2
-ms.sourcegitcommit: 9a51ea796ef3806ab9e7ec1ff75034b2f929ed2a
+ms.openlocfilehash: a28994561ec934a923cb016a8306b934583b39c2
+ms.sourcegitcommit: fb0d39e25bc0fe182037587b772d217db126d3bb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/28/2022
-ms.locfileid: "137907135"
+ms.lasthandoff: 05/07/2022
+ms.locfileid: "144813008"
 ---
 # <a name="lab-answer-key-implementing-hyper-v-replica-and-windows-server-backup"></a>랩 해답: Hyper-V 복제본 및 Windows Server 백업 구현
 
@@ -123,9 +123,9 @@ ms.locfileid: "137907135"
    Get-VM
    ```
 
-   > **참고**: 명령의 출력에 **SEA-CORE1** 이 나열되는지 확인합니다.
+   > **참고**: 명령의 출력이 **SEA-CORE1** 을 나열하고 복제본이 완료되었는지 확인합니다. 복제하는 데 5~10분 정도 걸릴 수 있습니다.
 
-   > **참고**: 두 Windows PowerShell 세션을 모두 열어 둡니다.
+   > **참고**: Windows PowerShell 세션을 모두 열어 둡니다.
 
 #### <a name="task-3-validate-a-failover"></a>작업 3: 장애 조치(failover) 유효성 검사
 
@@ -183,7 +183,7 @@ ms.locfileid: "137907135"
 
 1. 두 Windows PowerShell 창을 모두 열어 둡니다.
 
-   > **참고**: 그래픽 도구를 사용하여 이 연습의 결과를 확인하려면 **SEA-SVR2** 에서 Hyper-V 관리자를 사용한 다음, **Hyper-V** 콘솔에 **SEA-SVR1** 및 **SEA-SVR2** 서버를 추가할 수 있습니다. 그럼 다음, **SEA-CORE1** VM이 **SEA-SVR1** 및 **SEA-SVR2** 모두에 있고 **SEA-SVR2** 에서 **SEA-SVR1** 로 복제가 실행 중인지 확인할 수 있습니다.
+   > **참고**: 그래픽 도구를 사용하여 이 연습의 결과를 확인하려면 **SEA-SVR2** 에서 Hyper-V 관리자를 사용한 다음, **Hyper-V** 콘솔에 **SEA-SVR1** 및 **SEA-SVR2** 서버를 추가할 수 있습니다. **SEA-CORE1** VM이 **SEA-SVR1** 및 **SEA-SVR2** 둘 다에 있고 복제가 **SEA-SVR2** 에서 **SEA-SVR1** 로 실행되고 있는지 확인할 수 있습니다.
 
 ## <a name="exercise-2-implementing-backup-and-restore-with-windows-server-backup"></a>연습 2: Windows Server 백업을 사용하여 백업 및 복원 구현
 
