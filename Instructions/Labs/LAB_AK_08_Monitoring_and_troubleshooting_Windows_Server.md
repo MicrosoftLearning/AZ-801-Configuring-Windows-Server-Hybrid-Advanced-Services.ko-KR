@@ -3,12 +3,12 @@ lab:
   title: '랩: Windows Server 모니터링 및 문제 해결'
   type: Answer Key
   module: 'Module 8: Monitoring, performance, and troubleshooting'
-ms.openlocfilehash: 5067b69c33fa81f9ba2d7d4efb10b717fe11924f
-ms.sourcegitcommit: 9a51ea796ef3806ab9e7ec1ff75034b2f929ed2a
+ms.openlocfilehash: 3973d8bde19992787719f8650fc1ea83593e4491
+ms.sourcegitcommit: d2e9d886e710729f554d2ba62d1abe3c3f65fcb6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/28/2022
-ms.locfileid: "137907168"
+ms.lasthandoff: 07/10/2022
+ms.locfileid: "147047029"
 ---
 # <a name="lab-answer-key-monitoring-and-troubleshooting-windows-server"></a>랩 응답 키: Windows Server 모니터링 및 문제 해결
 
@@ -97,7 +97,7 @@ ms.locfileid: "137907168"
 
    > **참고**: **CPUSTRES64.EXE** 는 루프에서 최대 64개의 스레드를 실행하여 CPU 작업을 시뮬레이션하는 데 사용할 수 있는 SysInternals 유틸리티입니다.
 
-1. **CPUSTRESS License Agreement**(CPUSTRESS 사용권 계약) 대화 상자에서 **Agree**(동의)를 선택합니다.
+1. **CPUSTRESS License Agreement**(CPUSTRESS 사용권 계약) 대화 상자에서 **동의** 를 선택합니다.
 1. **CPU Stress**(CPU 스트레스) 대화 상자에서 실행 중인 스레드 목록 맨 위에 있는 강조 표시된 스레드를 마우스 오른쪽 단추로 클릭하거나 해당 상황에 맞는 메뉴에 액세스하고 **Activity Level**(작업 수준)을 선택한 후 **Busy (75%)** (사용률(75%))를 선택합니다.
 
 #### <a name="task-2-capture-performance-data-by-using-a-data-collector-set"></a>작업 2: 데이터 수집기 집합을 사용하여 성능 데이터 캡처

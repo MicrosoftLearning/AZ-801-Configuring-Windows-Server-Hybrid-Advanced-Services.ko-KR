@@ -3,12 +3,12 @@ lab:
   title: '랩: 장애 조치(failover) 클러스터링 구현'
   type: Answer Key
   module: 'Module 3: High availability in Windows Server'
-ms.openlocfilehash: 9f61985bbfde16e2653daff8032ebfb785cac219
-ms.sourcegitcommit: fb0d39e25bc0fe182037587b772d217db126d3bb
+ms.openlocfilehash: e73075a9d078b109d5bdb4380aaced3ef38de2ee
+ms.sourcegitcommit: d2e9d886e710729f554d2ba62d1abe3c3f65fcb6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/07/2022
-ms.locfileid: "144813005"
+ms.lasthandoff: 07/10/2022
+ms.locfileid: "147047017"
 ---
 # <a name="lab-answer-key-implementing-failover-clustering"></a>랩 응답 키: 장애 조치 클러스터링 구현
 

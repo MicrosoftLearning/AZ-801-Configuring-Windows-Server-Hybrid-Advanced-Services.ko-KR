@@ -2,12 +2,12 @@
 lab:
   title: '랩: Windows Server에서 보안 구성'
   module: 'Module 1: Windows Server security'
-ms.openlocfilehash: ed3fd5da4164e3fd48c9af7b6b37074c582618e0
-ms.sourcegitcommit: 9a51ea796ef3806ab9e7ec1ff75034b2f929ed2a
+ms.openlocfilehash: e3ff4a435b249f1688749a3992cb3375136f046c
+ms.sourcegitcommit: d2e9d886e710729f554d2ba62d1abe3c3f65fcb6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/28/2022
-ms.locfileid: "137907133"
+ms.lasthandoff: 07/10/2022
+ms.locfileid: "147046999"
 ---
 # <a name="lab-configuring-security-in-windows-server"></a>랩: Windows Server에서 보안 구성
 
@@ -32,7 +32,7 @@ Contoso 제약은 전 세계적으로 약 5,000명의 직원이 근무하는 의
 > **참고**: **AZ-801T00A-SEA-DC1**, **AZ-801T00A-SEA-SVR1**, **AZ-801T00A-SEA-SVR2** 가상 머신은 **SEA-DC1**, **SEA-SVR1**, **SEA-SVR2** 의 설치를 호스트합니다.
 
 1. **SEA-SVR2** 를 선택합니다.
-1. 다음 자격 증명을 사용하여 로그인:
+1. 다음 자격 증명을 사용하여 로그인합니다.
 
    - 사용자 이름: **Administrator**
    - 암호: **Pa55w.rd**
@@ -57,8 +57,8 @@ Pass-the-Hash 및 Pass-the-Ticket 자격 증명 도난으로부터 보호하기 
 
 #### <a name="task-1-enable-windows-defender-credential-guard-using-group-policy"></a>작업 1: 그룹 정책을 사용하여 Windows Defender Credential Guard 사용
 
-1. *SEA-SVR2**에서 **그룹 정책 관리 콘솔** 을 엽니다.
-1. **그룹 정책 관리 콘솔** 에서 **Forest: Contoso.com**, **Domains**, **Contoso.com** 을 탐색한 다음, **IT** OU(조직 단위)에 연결된 **CredentialGuard_GPO** 라는 GPO(그룹 정책 개체)를 만듭니다.
+1. **SEA-SVR2** 에서 **그룹 정책 관리** 콘솔을 엽니다.
+1. **그룹 정책 관리** 콘솔에서 **포리스트: contoso.com**, **Domains**, **contoso.com** 을 탐색한 다음, **IT** OU(조직 단위)에 연결된 **CredentialGuard_GPO** 라는 GPO(그룹 정책 개체)를 만듭니다.
 1. 그룹 정책 관리 편집기에서 **CredentialGuard_GPO** 를 열고 **컴퓨터 구성\\정책\\관리 템플릿\\시스템\\디바이스 가드** 노드로 이동합니다.
 1. 다음 설정을 사용하여 **가상화 기반 보안 켜기** 옵션을 활성화합니다.
 
@@ -67,7 +67,7 @@ Pass-the-Hash 및 Pass-the-Ticket 자격 증명 도난으로부터 보호하기 
    - 보안 시작 구성: **사용**
 
 1. **그룹 정책 관리 편집기** 창을 닫습니다.
-1. **그룹 정책 관리 콘솔** 을 닫습니다.
+1. **그룹 정책 관리** 콘솔 창을 닫습니다.
 
 #### <a name="task-2-enable-windows-defender-credential-guard-using-the-hvci-and-windows-defender-credential-guard-hardware-readiness-tool"></a>작업 2: HVCI 및 Windows Defender Credential Guard 하드웨어 준비 도구를 사용하여 Windows Defender Credential Guard를 활성화합니다.
 
@@ -188,8 +188,8 @@ Pass-the-Hash 및 Pass-the-Ticket 자격 증명 도난으로부터 보호하기 
    Set-AdmPwdComputerSelfPermission -Identity "Seattle_Servers"
    ```
 
-1. *SEA-SVR2**에서 **그룹 정책 관리 콘솔** 을 엽니다.
-1. **그룹 정책 관리 콘솔** 에서 **Forest: Contoso.com**, **Domains**, **Contoso.com** 을 탐색한 다음, **Seattle_Servers** OU에 연결된 **LAPS_GPO** 라는 GPO(그룹 정책 개체)를 만듭니다.
+1. *SEA-SVR2**에서 **그룹 정책 관리** 콘솔을 엽니다.
+1. **그룹 정책 관리** 콘솔에서 **포리스트: contoso.com**, **Domains**, **contoso.com** 을 탐색한 다음, **Seattle_Servers** OU에 연결된 **LAPS_GPO** 라는 GPO(그룹 정책 개체)를 만듭니다.
 1. 그룹 정책 관리 편집기에서 **LAPS_GPO** 를 열고 **컴퓨터 구성\\정책\\관리 템플릿\\LAPS** 노드로 이동합니다.
 1. **로컬 관리자 암호 관리 사용** 옵션을 활성화합니다.
 1. 다음 설정을 사용하여 **암호 설정** 옵션을 구성합니다.
@@ -204,7 +204,7 @@ Pass-the-Hash 및 Pass-the-Ticket 자격 증명 도난으로부터 보호하기 
    - 암호 사용 기간(일): **30**
 
 1. 그룹 정책 관리 편집기를 닫습니다.
-1. **그룹 정책 관리 콘솔** 을 닫습니다.
+1. **그룹 정책 관리** 콘솔 창을 닫습니다.
 
 #### <a name="task-3-deploy-laps-client-side-extension"></a>작업 3: LAPS 클라이언트 쪽 확장 배포
 

@@ -2,12 +2,12 @@
 lab:
   title: '랩: Azure 기반 복구 서비스 구현'
   module: 'Module 5: Planning and implementing migration and recovery services in hybrid scenarios'
-ms.openlocfilehash: 5d2a3e40b82d90b132e588fede27229275862047
-ms.sourcegitcommit: 9a51ea796ef3806ab9e7ec1ff75034b2f929ed2a
+ms.openlocfilehash: 0eee675e858aa8a36a0a437965431253d7fa120b
+ms.sourcegitcommit: d2e9d886e710729f554d2ba62d1abe3c3f65fcb6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/28/2022
-ms.locfileid: "137907130"
+ms.lasthandoff: 07/10/2022
+ms.locfileid: "147046990"
 ---
 # <a name="lab-implementing-azure-based-recovery-services"></a>랩: Azure 기반 복구 서비스 구현
 
@@ -28,10 +28,10 @@ ms.locfileid: "137907130"
 
 가상 머신: **AZ-801T00A-SEA-DC1**, **AZ-801T00A-SEA-SVR1**, **AZ-801T00A-SEA-SVR2** 를 실행해야 합니다. 다른 VM을 실행할 수도 있지만 이 랩에서는 필요하지 않습니다.
 
-> **참고**: **AZ-801T00A-SEA-DC1**, **AZ-801T00A-SEA-SVR1**, **AZ-801T00A-SEA-SVR2** 가상 머신은 **SEA-DC1**, **SEA-SVR1**, **SEA-SVR2** 의 설치를 호스트합니다.
+> **참고**: **AZ-801T00A-SEA-DC1**, **AZ-801T00A-SEA-SVR1**, **AZ-801T00A-SEA-SVR2** 가상 머신은 **SEA-DC1**, **SEA-SVR1**, **SEA-SVR2** 의 설치를 호스팅합니다.
 
 1. **SEA-SVR2** 를 선택합니다.
-1. 다음 자격 증명을 사용하여 로그인:
+1. 다음 자격 증명을 사용하여 로그인합니다.
 
    - 사용자 이름: **Administrator**
    - 암호: **Pa55w.rd**
@@ -58,7 +58,7 @@ Azure를 재해 복구 사이트로 사용하여 Azure VM에서 실행되는 VM�
    |설정|값|
    |---|---|
    |구독|이 랩에서 사용할 Azure 구독의 이름|
-   |리소스 그룹|새 리소스 그룹 **AZ801-L0501-RG** 의 이름|
+   |Resource group|새 리소스 그룹 **AZ801-L0501-RG** 의 이름|
    |자격 증명 모음 이름|**az801l05a-rsvault**|
    |위치|Azure Recovery Services 자격 증명 모음을 만들 수 있고 랩 환경의 위치에 가까운 Azure 지역의 이름|
 
@@ -96,7 +96,7 @@ Azure를 재해 복구 사이트로 사용하여 Azure VM에서 실행되는 VM�
    |설정|값|
    |---|---|
    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
-   |리소스 그룹|새 리소스 그룹 **AZ801-L0502-RG** 의 이름|
+   |Resource group|새 리소스 그룹 **AZ801-L0502-RG** 의 이름|
    |이름|**az801l05-dr-vnet**|
    |지역|이 랩의 앞부분에서 Recovery Services 자격 증명 모음을 배포한 Azure 지역의 이름|
 
@@ -112,7 +112,7 @@ Azure를 재해 복구 사이트로 사용하여 Azure VM에서 실행되는 VM�
    |설정|값|
    |---|---|
    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
-   |리소스 그룹|**AZ801-L0502-RG**|
+   |Resource group|**AZ801-L0502-RG**|
    |이름|**az801l05-test-vnet**|
    |지역|이 랩의 앞부분에서 Recovery Services 자격 증명 모음을 배포한 Azure 지역의 이름|
 
@@ -130,7 +130,7 @@ Azure를 재해 복구 사이트로 사용하여 Azure VM에서 실행되는 VM�
    |설정|값|
    |---|---|
    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
-   |리소스 그룹|**AZ801-L0502-RG**|
+   |Resource group|**AZ801-L0502-RG**|
    |스토리지 계정 이름|문자 및 숫자로 구성되고 문자로 시작하는 3~24자 사이의 전역적으로 고유한 이름|
    |지역|이 랩의 앞부분에서 Recovery Services 자격 증명 모음을 배포한 Azure 지역의 이름|
    |성능|표준|

@@ -3,12 +3,12 @@ lab:
   title: '랩: Azure 기반 복구 서비스 구현'
   type: Answer Key
   module: 'Module 5: Planning and implementing migration and recovery services in hybrid scenarios'
-ms.openlocfilehash: 57aeb2d0bbcc6a67e44e5f22a874959c6ae9e1e0
-ms.sourcegitcommit: 9a51ea796ef3806ab9e7ec1ff75034b2f929ed2a
+ms.openlocfilehash: 07b2291c1d4122dd53e891b392168a1ff8fb7bf4
+ms.sourcegitcommit: d2e9d886e710729f554d2ba62d1abe3c3f65fcb6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/28/2022
-ms.locfileid: "137907144"
+ms.lasthandoff: 07/10/2022
+ms.locfileid: "147047026"
 ---
 # <a name="lab-answer-key-implementing-azure-based-recovery-services"></a>랩 해답: Azure 기반 복구 서비스 구현
 
@@ -24,7 +24,7 @@ ms.locfileid: "137907144"
    |설정|값|
    |---|---|
    |구독|이 랩에서 사용할 Azure 구독의 이름|
-   |리소스 그룹|새 리소스 그룹 **AZ801-L0501-RG** 의 이름|
+   |Resource group|새 리소스 그룹 **AZ801-L0501-RG** 의 이름|
    |자격 증명 모음 이름|**az801l05a-rsvault**|
    |위치|Azure Recovery Services 자격 증명 모음을 만들 수 있고 랩 환경의 위치에 가까운 Azure 지역의 이름|
 
@@ -40,7 +40,7 @@ ms.locfileid: "137907144"
 
    > **참고:** 그러면 **az801l05a-rsvault** 페이지가 자동으로 표시됩니다.
 
-1. **az801l05a'-rsvault** 페이지에서 왼쪽 세로 메뉴의 **설정** 섹션에서 **속성** 을 선택합니다. 
+1. **az801l05a-rsvault** 페이지에서 왼쪽 세로 메뉴의 **설정** 섹션에서 **속성** 을 선택합니다. 
 1. **az801l05a-rsvault | 속성** 페이지에서 **백업 구성** 레이블 아래의 **업데이트** 링크를 선택합니다.
 1. **백업 구성** 페이지에서 **스토리지 복제 유형** 을 **로컬 중복** 으로 설정하고 **저장** 을 선택하고 **백업 구성** 페이지를 닫습니다.
 
@@ -59,7 +59,7 @@ ms.locfileid: "137907144"
    |설정|값|
    |---|---|
    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
-   |리소스 그룹|새 리소스 그룹 **AZ801-L0502-RG** 의 이름|
+   |Resource group|새 리소스 그룹 **AZ801-L0502-RG** 의 이름|
    |이름|**az801l05-dr-vnet**|
    |지역|이 랩의 앞부분에서 Recovery Services 자격 증명 모음을 배포한 Azure 지역의 이름|
 
@@ -79,7 +79,7 @@ ms.locfileid: "137907144"
    |설정|값|
    |---|---|
    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
-   |리소스 그룹|**AZ801-L0502-RG**|
+   |Resource group|**AZ801-L0502-RG**|
    |이름|**az801l05-test-vnet**|
    |지역|이 랩의 앞부분에서 Recovery Services 자격 증명 모음을 배포한 Azure 지역의 이름|
 
@@ -102,7 +102,7 @@ ms.locfileid: "137907144"
    |설정|값|
    |---|---|
    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
-   |리소스 그룹|**AZ801-L0502-RG**|
+   |Resource group|**AZ801-L0502-RG**|
    |스토리지 계정 이름|문자 및 숫자로 구성되고 문자로 시작하는 3~24자 사이의 전역적으로 고유한 이름|
    |지역|이 랩의 앞부분에서 Recovery Services 자격 증명 모음을 배포한 Azure 지역의 이름|
    |성능|표준|
@@ -118,7 +118,7 @@ ms.locfileid: "137907144"
 #### <a name="task-2-prepare-protection-of-a-hyper-v-virtual-machine"></a>작업 2: Hyper-V 가상 머신 보호 준비
 
 1. **SEA-SVR2** 에서, Azure Portal이 표시된 Microsoft Edge 창의 도구 모음에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자를 사용하여 **Recovery Services 자격 증명 모음** 을 검색하고 선택한 후 **Recovery Services 자격 증명 모음** 페이지에서 **az801l05a-rsvault** 항목을 선택합니다.
-1. **az801l05a'-rsvault** 페이지에서 왼쪽 세로 메뉴의 **시작** 섹션에서 **Site Recovery** 를 선택합니다.
+1. **az801l05a-rsvault** 페이지에서 왼쪽 세로 메뉴의 **시작** 섹션에서 **Site Recovery** 를 선택합니다.
 1. **az801l05a-rsvault \| Site Recovery** 페이지의 **Hyper-V 컴퓨터에서 Azure로** 섹션에 있는 **1. 인프라 준비** 를 선택합니다. 
 1. **인프라 준비** 페이지의 **배포 계획** 탭에 있는 **배포 계획이 완료되었나요?** 드롭다운 목록에서 **예, 완료함** 을 선택하고 **다음** 을 선택합니다.
 1. **인프라 준비** 페이지의 **원본 설정** 탭에서 **System Center VMM을 사용하여 Hyper-V 호스트를 관리하고 있습니까?** 레이블 옆에 있는 **아니요** 옵션을 선택합니다.
@@ -236,7 +236,7 @@ ms.locfileid: "137907144"
 
 1. **SEA-SVR2** 에서 **시작** 을 선택하고 **시작** 메뉴에서 **설정** 앱을 선택합니다.
 1. **설정** 앱에서 **앱** 을 선택합니다.
-1. 앱 & 기능 창에서 **Microsoft Azure Recovery Services 에이전트** 를 선택하고 **제거** 를 선택한 다음, 프롬프트에 따라 제거합니다.
+1. **앱 및 기능** 창에서 **Microsoft Azure Recovery Services 에이전트** 를 선택하고 **제거** 를 선택한 다음, 프롬프트에 따라 제거합니다.
    > **참고:** 설치에 실패했다는 오류 메시지가 표시되면 VM을 다시 시작하고 다시 시도합니다. 
 1. **SEA-SVR2** 의 Azure Portal을 표시하는 Microsoft Edge 창에서 **az801l05a-rsvault Recovery Services** 자격 증명 모음 페이지의 왼쪽 세로 메뉴에 있는 **시작** 섹션에서 **백업** 을 선택합니다.
 1. **az801l05a-rsvault \|백업** 페이지에서 다음 설정을 지정합니다.

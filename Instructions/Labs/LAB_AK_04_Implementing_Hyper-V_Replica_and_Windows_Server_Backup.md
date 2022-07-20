@@ -3,12 +3,12 @@ lab:
   title: '랩: Hyper-V 복제본 및 Windows Server 백업 구현'
   type: Answer Key
   module: 'Module 4: Disaster Recovery in Windows Server'
-ms.openlocfilehash: a28994561ec934a923cb016a8306b934583b39c2
-ms.sourcegitcommit: fb0d39e25bc0fe182037587b772d217db126d3bb
+ms.openlocfilehash: 1f990cf9fbe0bf61bb25088041b775a24d108a64
+ms.sourcegitcommit: d2e9d886e710729f554d2ba62d1abe3c3f65fcb6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/07/2022
-ms.locfileid: "144813008"
+ms.lasthandoff: 07/10/2022
+ms.locfileid: "147046993"
 ---
 # <a name="lab-answer-key-implementing-hyper-v-replica-and-windows-server-backup"></a>랩 해답: Hyper-V 복제본 및 Windows Server 백업 구현
 
@@ -34,7 +34,7 @@ ms.locfileid: "144813008"
 
    ```powershell
    New-Item -ItemType Directory -Path C:\ReplicaStorage -Force
-   Set-VMReplicationServer -ReplicationEnabled $true -AllowedAuthenticationType Kerberos -ReplicationAllowedFromAnyServer $true -DefaultStorageLocation C:\ReplicaStorage
+   Set-VMReplicationServer -ReplicationEnabled $true -AllowedAuthenticationType Kerberos -KerberosAuthenticationPort 8080 -ReplicationAllowedFromAnyServer $true -DefaultStorageLocation C:\ReplicaStorage
    ```
 
 1. **Hyper-V 복제본** 에 대한 복제본 서버로 **SEA-SVR2** 가 구성되어 있는지 확인하려면 다음 명령을 입력하고 Enter 키를 누릅니다.
@@ -47,7 +47,7 @@ ms.locfileid: "144813008"
 
    - **RepEnabled: True**
    - **AuthType: Kerb**
-   - **KerAuthPort: 80**
+   - **KerAuthPort: 8080**
    - **CertAuthPort: 443**
    - **AllowAnyServer: True**
 

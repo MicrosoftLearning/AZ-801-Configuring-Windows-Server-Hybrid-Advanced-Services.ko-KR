@@ -3,12 +3,12 @@ lab:
   title: '랩: Windows Server에서 업그레이드 및 마이그레이션'
   type: Answer Key
   module: Module 6 - Upgrade and migrate in Windows Server
-ms.openlocfilehash: 7d666444d9a0be48b6f398474a05a60a0902fee0
-ms.sourcegitcommit: fb0d39e25bc0fe182037587b772d217db126d3bb
+ms.openlocfilehash: 586aafbecd3f9d7d767cf1374e95f919adf2810a
+ms.sourcegitcommit: d2e9d886e710729f554d2ba62d1abe3c3f65fcb6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/07/2022
-ms.locfileid: "144812996"
+ms.lasthandoff: 07/10/2022
+ms.locfileid: "147047023"
 ---
 # <a name="lab-answer-key-upgrade-and-migrate-in-windows-server"></a>랩 해답: Windows Server에서 업그레이드 및 마이그레이션
 
@@ -55,7 +55,7 @@ ms.locfileid: "144812996"
    | 설정 | 값 | 
    | --- | --- |
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
+   | Resource group | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
    | 지역 | Azure VM을 프로비전할 수 있는 Azure 지역의 이름 |
    | 관리자 사용자 이름 | **학생** |
    | 관리자 암호 | **Pa55w.rd1234** |
@@ -102,7 +102,7 @@ ms.locfileid: "144812996"
    | 설정 | 값 | 
    | --- | --- |
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0602-RG** 의 이름 |
+   | Resource group | 새 리소스 그룹 **AZ801-L0602-RG** 의 이름 |
    | 이름 | **az801l06a-bastion** |
    | 지역 | 이 연습의 이전 작업에서 리소스를 배포한 동일한 Azure 지역 |
    | 계층 | **기본** |
@@ -126,12 +126,12 @@ ms.locfileid: "144812996"
    | 설정 | 값 |
    | --- | --- |
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
+   | Resource group | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
    | 가상 머신 이름 | **az801l06a-dc2** |
    | 지역 | 이 연습의 앞부분에서 첫 번째 가상 머신을 배포한 동일한 Azure 지역을 선택합니다. |
    | 가용성 옵션 | **가용성 집합** |
    | 가용성 집합 | **adAvailabilitySet** |
-   | 이미지 | **Windows Server 2022 Datacenter - Gen2** |
+   | 이미지 | **Windows Server 2022 Datacenter: Azure Edition - Gen2** |
    | Azure Spot 인스턴스 | **아니요** |
    | 크기 | **표준 D2s v3** |
    | 사용자 이름 | **학생** |
@@ -179,7 +179,7 @@ ms.locfileid: "144812996"
 
 #### <a name="task-4-manually-promote-a-domain-controller-in-an-azure-vm"></a>작업 4: Azure VM에서 수동으로 도메인 컨트롤러 승격
 
-1. **SEA-SVR2** 의 Azure Portal을 표시하는 Microsoft Edge 창의 배포 페이지에서 **리소스로 이동** 을 선택합니다. '
+1. **SEA-SVR2** 의 Azure Portal을 표시하는 Microsoft Edge 창의 배포 페이지에서 **리소스로 이동** 을 선택합니다.
 1. **az801l06a-dc2** 페이지의 왼쪽 세로 메뉴에 있는 **설정** 섹션에서 **네트워킹** 을 선택합니다.
 1. **az801l06a-dc2 \| 네트워킹** 페이지에서 **az801l06a-dc2** 가상 머신의 네트워크 인터페이스에 대한 링크를 선택합니다.
 1. 네트워크 인터페이스 페이지의 왼쪽 세로 메뉴에 있는 **설정** 섹션에서 **IP 구성** 을 선택합니다.
@@ -204,7 +204,7 @@ ms.locfileid: "144812996"
 1. AD DS 및 DNS 서버 역할을 설치하려면 Windows PowerShell 명령 프롬프트에서 다음 명령을 입력한 다음, Enter 키를 누릅니다.
     
    ```powershell
-   Install-WindowsFeature -Name AD-Domain-Services,DNS -IncludeManagementFeatures
+   Install-WindowsFeature -Name AD-Domain-Services,DNS -IncludeManagementTools
    ```
 
    > **참고**: 설치가 완료될 때까지 기다립니다. 3분 정도 걸릴 수 있습니다.
@@ -222,7 +222,7 @@ ms.locfileid: "144812996"
 1. **Active Directory Domain Services 구성 마법사** 의 **배포 구성** 페이지에 있는 **배포 작업 선택** 에서 **기존 도메인에 도메인 컨트롤러 추가** 가 선택되어 있는지 확인합니다.
 1. **도메인** 텍스트 상자에 **contoso.com** 도메인을 입력합니다.
 1. **이 작업을 수행하기 위해 자격 증명 제공** 섹션에서 **변경** 을 선택합니다.
-1. **배포 작업 자격 증명** 대화 상자의 **사용자 이름** 상자에 **CONTOSO\\Student** 를 입력하고 **암호** 상자에 **Pa55w.rd1234** 를 입력한 후 **확인** 을 선택합니다. 
+1. **배포 작업 자격 증명** 대화 상자의 **사용자 이름** 상자에 **Student@contoso.com** 를 입력하고 **암호** 상자에 **Pa55w.rd1234** 를 입력한 후 **확인** 을 선택합니다. 
 1. **Active Directory Domain Services 구성 마법사** 의 **배포 구성** 페이지로 돌아가서 **다음** 을 선택합니다.
 1. **도메인 컨트롤러 옵션** 페이지에서 **DNS(도메인 이름 시스템) 서버** 및 **GC(글로벌 카탈로그)** 확인란이 선택되어 있는지 확인합니다. **RODC(읽기 전용 도메인 컨트롤러)** 확인란이 해제되어 있는지 확인합니다.
 1. **DSRM(Directory Services Restore Mode) 암호 입력** 섹션에서 암호 **Pa55w.rd1234** 를 입력하고 확인한 후 **다음** 을 선택합니다.
@@ -276,7 +276,7 @@ ms.locfileid: "144812996"
    ```powershell
    Start-BitsTransfer -Source https://aka.ms/WACDownload -Destination "$env:USERPROFILE\Downloads\WindowsAdminCenter.msi"
    ```
-1. 다음 명령을 입력한 후 Enter 키를 눌러 Windows Admin Center를 설치합니다.
+1. 다음 명령을 입력한 다음 Enter 키를 눌러 Windows Admin Center를 설치합니다.
     
    ```powershell
    Start-Process msiexec.exe -Wait -ArgumentList "/i $env:USERPROFILE\Downloads\WindowsAdminCenter.msi /qn /L*v log.txt REGISTRY_REDIRECT_PORT_80=1 SME_PORT=443 SSL_CERTIFICATE_OPTION=generate"
@@ -381,7 +381,7 @@ ms.locfileid: "144812996"
    | 서브넷 | **255.255.0.0** |
    | 게이트웨이 | **172.16.10.1** |
 
-1. **새 서버로 전환** 탭에서, **sea-svr1.contoso.com에서 sea-svr2.contoso.com으로 전환 구성** 창의 **대상 네트워크 어댑터** 드롭다운 목록에서 **시애틀** 을 선택합니다.
+1. **새 서버로 전환** 탭에서, **sea-svr1.contoso.com to sea-svr2.contoso.com으로 전환 구성** 창의 **대상 네트워크 어댑터** 드롭다운 목록에서 **이더넷** 을 선택합니다.
 1. **새 서버로 전환** 탭에서, **sea-svr1.contoso.com에서 sea-svr2.contoso.com으로 전환 구성** 창의 **전환 후 원본 디바이스 이름 바꾸기** 섹션에서 **새 이름 선택** 옵션을 선택하고 **새 원본 컴퓨터 이름**<!--text box?-->에서 **SEA-SVR1-OLD** 를 입력한 후 **다음** 을 선택합니다.
 1. **새 서버로 전환** 탭에서, **컷오버 설정 조정** 창의 **컷오버 시간 초과(분)** 텍스트 상자에서 **30** 을 입력하고, **AD 자격 증명 입력** 섹션에서 **저장된 자격 증명 정보** 옵션을 활성화된 상태로 둔 후 **다음** 을 선택합니다.
 1. **새 서버로 전환** 탭의 **원본 및 대상 디바이스 유효성 검사** 창에서 **유효성 검사** 를 선택하고 유효성 검사가 성공적으로 완료되면 **다음** 을 선택합니다.

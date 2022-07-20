@@ -2,12 +2,12 @@
 lab:
   title: '랩: Windows Server에서 업그레이드 및 마이그레이션'
   module: 'Module 6: Upgrade and migrate in Windows Server'
-ms.openlocfilehash: 33f6ea57f4ffc31fb0f7279a9e0df9100039e29b
-ms.sourcegitcommit: fb0d39e25bc0fe182037587b772d217db126d3bb
+ms.openlocfilehash: 6cfa6d05941436b9a90c3196ff882839eb8ced9b
+ms.sourcegitcommit: d2e9d886e710729f554d2ba62d1abe3c3f65fcb6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/07/2022
-ms.locfileid: "144813001"
+ms.lasthandoff: 07/10/2022
+ms.locfileid: "147046987"
 ---
 # <a name="lab-upgrade-and-migrate-in-windows-server"></a>랩: Windows Server에서 업그레이드 및 마이그레이션
 
@@ -90,7 +90,7 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
    | 설정 | 값 | 
    | --- | --- |
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
+   | Resource group | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
    | 지역 | Azure VM을 프로비전할 수 있는 Azure 지역의 이름 |
    | 관리자 사용자 이름 | **학생** |
    | 관리자 암호 | **Pa55w.rd1234** |
@@ -129,7 +129,7 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
    | 설정 | 값 | 
    | --- | --- |
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0602-RG** 의 이름 |
+   | Resource group | 새 리소스 그룹 **AZ801-L0602-RG** 의 이름 |
    | 이름 | **az801l06a-bastion** |
    | 지역 | 이 연습의 이전 작업에서 리소스를 배포한 동일한 Azure 지역 |
    | 계층 | **기본** |
@@ -149,12 +149,12 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
    | 설정 | 값 |
    | --- | --- |
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
+   | Resource group | 새 리소스 그룹 **AZ801-L0601-RG** 의 이름 |
    | 가상 머신 이름 | **az801l06a-dc2** |
    | 지역 | 이 연습의 앞부분에서 첫 번째 가상 머신을 배포한 동일한 Azure 지역을 선택합니다. |
    | 가용성 옵션 | **가용성 집합** |
    | 가용성 집합 | **adAvailabilitySet** |
-   | 이미지 | **Windows Server 2022 Datacenter - Gen2** |
+   | 이미지 | **Windows Server 2022 Datacenter: Azure Edition - Gen2** |
    | Azure Spot 인스턴스 | **아니요** |
    | 크기 | **표준 D2s v3** |
    | 사용자 이름 | **학생** |
@@ -196,7 +196,7 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
 1. AD DS 및 DNS 서버 역할을 설치하려면 Windows PowerShell 프롬프트에서 다음 명령을 실행합니다.
     
    ```powershell
-   Install-WindowsFeature -Name AD-Domain-Services,DNS -IncludeManagementFeatures
+   Install-WindowsFeature -Name AD-Domain-Services,DNS -IncludeManagementTools
    ```
 
    > **참고**: 설치가 완료될 때까지 기다립니다. 3분 정도 걸릴 수 있습니다.
@@ -212,7 +212,7 @@ Contoso는 온-프레미스 Windows 서버를 Azure VM(가상 머신)으로 쉽�
 1. **az801l06a-dc2** 에 대한 원격 데스크톱 세션 내에서 **서버 관리자** 창으로 전환합니다.
 1. **서버 관리자** 에서 **Active Directory Domain Services 구성 마법사** 를 시작하여 도메인 컨트롤러 승격을 수행합니다.
 1. **Active Directory Domain Services 구성 마법사** 에서 **기존 도메인에 도메인 컨트롤러 추가** 옵션을 선택하고 **contoso.com** 을 대상 도메인으로 지정합니다.
-1. **CONTOSO\\Student** 사용자 이름과 **Pa55w.rd1234** 암호를 자격 증명으로 사용하여 승격을 수행합니다.
+1. **Student@contoso.com** 사용자 이름과 **Pa55w.rd1234** 암호를 자격 증명으로 사용하여 승격을 수행합니다.
 1. 새 도메인 컨트롤러를 쓰기 가능으로 지정하는 옵션을 지정하고 **DNS(Domain Name System) 서버** 및 **GC(글로벌 카탈로그)** 구성 요소를 포함합니다.
 1. **DSRM(Directory Services Restore Mode) 암호** 를 **Pa55w.rd1234** 로 설정합니다.
 1. AD DS 데이터베이스, 로그 파일 및 SYSVOL을 호스트하는 폴더를 호스트하는 드라이브를 드라이브 **C** 에서 드라이브 **F** 로 변경합니다.

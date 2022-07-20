@@ -3,12 +3,12 @@ lab:
   title: '랩: Windows Server에서 보안 구성'
   type: Answer Key
   module: 'Module 1: Windows Server security'
-ms.openlocfilehash: aef08e21cdf3815e2dd1a99723002fddaad8b72d
-ms.sourcegitcommit: 9a51ea796ef3806ab9e7ec1ff75034b2f929ed2a
+ms.openlocfilehash: 42202d9eb5bf7c9a371c3215120ec8b7f6da0d46
+ms.sourcegitcommit: d2e9d886e710729f554d2ba62d1abe3c3f65fcb6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/28/2022
-ms.locfileid: "137907119"
+ms.lasthandoff: 07/10/2022
+ms.locfileid: "147046981"
 ---
 # <a name="lab-answer-key-configuring-security-in-windows-server"></a>랩 응답 키: Windows Server에서 보안 구성
 
@@ -21,22 +21,22 @@ ms.locfileid: "137907119"
 1. **SEA-SVR2** 에 연결한 다음, 필요하다면 **Pa55w.rd** 암호를 이용해 **CONTOSO\\Administrator** 로 로그인합니다.
 1. **시작** 단추 옆에 있는 **검색하려면 여기에 입력** 텍스트 상자에 **그룹 정책 관리** 를 입력합니다.
 1. 결과 목록에서 **그룹 정책 관리** 를 선택합니다.
-1. **그룹 정책 관리 콘솔** 에서 **포리스트: Contoso.com** 확장, **도메인** 확장, **Contoso.com** 확장, **IT** OU( 조직 구성 단위)의 **상황에 맞는** 메뉴를 마우스 오른쪽 단추로 클릭하거나 액세스한 다음, **이 도메인에서 GPO를 만들어 여기에 연결** 을 선택합니다.
+1. **그룹 정책 관리** 콘솔에서 **포리스트: contoso.com** 확장, **도메인** 확장, **contoso.com** 확장, **IT** OU( 조직 구성 단위)의 **상황에 맞는** 메뉴를 마우스 오른쪽 단추로 클릭하거나 액세스한 다음, **이 도메인에서 GPO를 만들어 여기에 연결** 을 선택합니다.
 1. **새 GPO** 대화 상자의 **이름** 텍스트 상자에 **CredentialGuard_GPO** 를 입력한 다음, **확인** 을 선택합니다.
 1. **그룹 정책 관리** 창의 **IT** 에서 **CredentialGuard_GPO** 의 **상황에 맞는** 메뉴를 마우스 오른쪽 단추로 클릭하거나 액세스한 다음, **편집** 을 선택합니다.
-1. 그룹 정책 관리 편집기에서 **컴퓨터 구성\\정책\\관리 템플릿\\시스템\\Device Guard** 를 찾아봅니다.
+1. **그룹 정책 관리 편집기** 에서 **컴퓨터 구성\\정책\\관리 템플릿\\시스템\\Device Guard** 로 이동합니다.
 1. **가상화 기반 보안 켜기** 를 선택한 다음, **정책 설정** 링크를 선택합니다.
 1. **가상화 기반 보안 켜기** 창에서 **사용** 옵션을 선택합니다.
 1. **플랫폼 보안 수준 선택** 드롭다운 목록에서 **보안 부팅 및 DMA 보호** 항목이 선택되어 있는지 확인합니다.
 1. **Credential Guard 구성** 드롭다운 목록에서 **UEFI 잠금을 사용하여 설정** 항목을 선택합니다.
 1. **보안 시작 구성** 드롭다운 목록에서 **사용** 항목을 선택한 다음, **확인** 을 선택합니다.
 1. **그룹 정책 관리 편집기** 창을 닫습니다.
-1. **그룹 정책 관리 콘솔** 을 닫습니다.
+1. **그룹 정책 관리** 콘솔 창을 닫습니다.
 
 #### <a name="task-2-enable-windows-defender-credential-guard-using-the-hypervisor-protected-code-integrity-hvci-and-windows-defender-credential-guard-hardware-readiness-tool"></a>작업 2: HVCI(Hypervisor-Protected 코드 무결성) 및 Windows Defender Credential Guard 하드웨어 준비 도구를 사용하여 Windows Defender Credential Guard 사용
 
 1. **SEA-SVR2** 에서 **시작** 을 선택하고 **Windows PowerShell** 의 **상황에 맞는** 메뉴를 마우스 오른쪽 단추로 클릭하거나 액세스한 다음, **관리자 권한으로 실행** 을 선택합니다.
-1. HVCI 및 Windows Defender Credential Guard 하드웨어 준비 도구를 실행하려면 Windows PowerShell 명령 프롬프트에서 다음 명령을 입력하고 각각 Enter 키를 누릅니다.
+1. HVCI 및 Windows Defender Credential Guard 하드웨어 준비 도구를 실행하려면 Windows PowerShell 명령 프롬프트에서 다음 명령을 입력하고 첫 번째 프롬프트에서 **[R] 한 번 실행** 을 선택한 다음 나머지 프롬프트에 대해 Enter 키를 누릅니다.
 
    ```powershell
    Set-Location -Path C:\Labfiles\Lab01\
@@ -120,7 +120,7 @@ ms.locfileid: "137907119"
 
    > **참고**: 이 랩에서 나중에 **SEA-SVR1** 에서 **SEA-SVR2** 에 연결하는 데 필요합니다.
 
-#### <a name="task-2-prepare-active-directory-for-laps"></a>작업 2: LAPS용 Active Directory 준비
+#### <a name="task-2-prepare-ad-ds-for-laps"></a>작업 2: LAPS용 AD DS 준비
 
 1. LAPS용 도메인을 준비하려면 **SEA-SVR2** 의 Windows PowerShell 명령 프롬프트에서 다음 명령을 각각 입력한 후 Enter 키를 누릅니다.
 
@@ -132,7 +132,7 @@ ms.locfileid: "137907119"
 
 1. **SEA-SVR2** 에서 **시작** 단추 옆에 있는 **검색하려면 여기에 입력** 텍스트 상자에 **그룹 정책 관리** 를 입력합니다.
 1. 결과 목록에서 **그룹 정책 관리** 를 선택합니다.
-1. **그룹 정책 관리 콘솔** 에서 **포리스트: Contoso.com** 확장, **도메인** 확장, **Contoso.com** 확장, **Seattle_Servers** OU의 **상황에 맞는** 메뉴를 마우스 오른쪽 단추로 클릭하거나 액세스한 다음, **이 도메인에서 GPO를 만들어 여기에 연결** 을 선택합니다.
+1. **그룹 정책 관리** 콘솔에서 **포리스트: contoso.com** 확장, **도메인** 확장, **contoso.com** 확장, **Seattle_Servers** OU의 **상황에 맞는** 메뉴를 마우스 오른쪽 단추로 클릭하거나 액세스한 다음, **이 도메인에서 GPO를 만들어 여기에 연결** 을 선택합니다.
 1. **새 GPO** 대화 상자의 **이름** 텍스트 상자에 **LAPS_GPO** 를 입력한 다음, **확인** 을 선택합니다.
 1. **그룹 정책 관리** 창의 **Seattle_Servers** 에서 **LAPS_GPO** 의 **상황에 맞는** 메뉴를 마우스 오른쪽 단추로 클릭하거나 액세스한 다음, **편집** 을 선택합니다.
 1. **그룹 정책 관리 편집기** 창의 **컴퓨터 구성** 에서 **정책** 노드를 확장하고 **관리 템플릿** 노드를 확장한 다음, **LAPS** 를 선택합니다.

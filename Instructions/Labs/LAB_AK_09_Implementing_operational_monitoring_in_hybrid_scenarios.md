@@ -3,12 +3,12 @@ lab:
   title: '랩: 하이브리드 시나리오에서 운영 모니터링 구현'
   type: Answer Key
   module: Module 9 - Implementing operational monitoring in hybrid scenarios
-ms.openlocfilehash: b68d5e88d5a550967a2cba67b57465993299ee22
-ms.sourcegitcommit: fb0d39e25bc0fe182037587b772d217db126d3bb
+ms.openlocfilehash: b27abf5d550f581a170fe3e2e9df76daa9c6c1d6
+ms.sourcegitcommit: d2e9d886e710729f554d2ba62d1abe3c3f65fcb6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/07/2022
-ms.locfileid: "144813011"
+ms.lasthandoff: 07/10/2022
+ms.locfileid: "147046979"
 ---
 # <a name="lab-answer-key-implementing-operational-monitoring-in-hybrid-scenarios"></a>랩 응답 키: 하이브리드 시나리오에서 운영 모니터링 구현
 
@@ -66,7 +66,7 @@ ms.locfileid: "144813011"
    | 설정 | 값 |
    | --- | --- |
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | 리소스 그룹 | 새 리소스 그룹 **AZ801-L0902-RG** 의 이름 |
+   | Resource group | 새 리소스 그룹 **AZ801-L0902-RG** 의 이름 |
    | Log Analytics 작업 영역 | 고유한 이름 |
    | 지역 | 이전 작업에서 가상 머신을 배포한 Azure 지역의 이름 |
 
@@ -74,68 +74,41 @@ ms.locfileid: "144813011"
 
    >**참고**: 배포가 완료될 때까지 기다리세요. 배포는 1분 정도 걸립니다.
 
-## <a name="exercise-2-configuring-monitoring-of-on-premises-servers"></a>연습 2: 온-프레미스 서버 모니터링 구성
+1. Azure Portal에서 새로 프로비저닝된 작업 영역의 블레이드로 이동합니다.
+1. 작업 영역 블레이드에서 **에이전트 관리** 블레이드로 이동하여 **작업 영역 ID** 및 **기본 키** 의 값을 기록합니다. 다음 작업에서 이 두 값이 필요합니다.
 
-#### <a name="task-1-register-windows-admin-center-with-azure"></a>작업 1: Windows Admin Center를 Azure에 등록
+#### <a name="task-4-install-service-map-solution"></a>작업 4: 서비스 맵 솔루션 설치
 
-1. **SEA-SVR2** 에서 **시작** 을 선택한 후 **Windows PowerShell(관리자)** 을 선택합니다.
-
-   >**참고**: **SEA-SVR2** 에 Windows Admin Center를 아직 설치하지 않았다면 다음 두 단계를 수행합니다.
-
-1. **Windows PowerShell** 콘솔에서 다음 명령을 입력한 후 Enter 키를 눌러 Windows Admin Center의 최신 버전을 다운로드합니다.
-    
-   ```powershell
-   Start-BitsTransfer -Source https://aka.ms/WACDownload -Destination "$env:USERPROFILE\Downloads\WindowsAdminCenter.msi"
-   ```
-1. 다음 명령을 입력한 후 Enter 키를 눌러 Windows Admin Center를 설치합니다.
-    
-   ```powershell
-   Start-Process msiexec.exe -Wait -ArgumentList "/i $env:USERPROFILE\Downloads\WindowsAdminCenter.msi /qn /L*v log.txt REGISTRY_REDIRECT_PORT_80=1 SME_PORT=443 SSL_CERTIFICATE_OPTION=generate"
-   ```
-
-   > **참고**: 설치가 완료될 때까지 기다리세요. 이 작업은 2분 정도 걸립니다.
-
-   > **참고**: Windows Admin Center 설치를 완료하면 ERR_CONNECTION_REFUSED 오류가 나타날 수 있습니다. 이 경우 계속 진행하기 전에 SEA-SVR2를 재시작합니다.
-
-1. **SEA-SVR2** 에서 Microsoft Edge를 시작한 후 **https://SEA-SVR2.contoso.com** 으로 이동합니다. 
-1. 메시지가 표시되면 **Windows 보안** 대화 상자에 다음 자격 증명을 입력한 후 **확인** 을 선택합니다.
-
-   - 사용자 이름: **CONTOSO\\Administrator**
-   - 암호: **Pa55w.rd**
-
-1. **모든 연결** 창에서 페이지의 오른쪽 위 모서리에 있는 **설정**(톱니 모양) 아이콘을 선택합니다.
-1. Windows Admin Center의 **설정** 페이지에 있는 **Azure 계정** 섹션에서 **Azure에 등록** 을 선택한 후 **등록** 을 선택합니다.
-1. **Windows Admin Center에서 Azure 시작** 창에서 **복사** 를 선택하여 등록 절차의 단계 목록에 표시된 코드를 복사합니다. 
-1. 등록 절차의 단계 목록에서 **코드 입력** 링크를 선택합니다.
-
-   >**참고**: Microsoft Edge 창에 **코드 입력** 페이지가 표시되는 다른 탭이 열립니다.
-
-1. **코드 입력** 텍스트 상자에서 복사한 코드를 클립보드에 붙여넣은 후 **다음** 을 선택합니다.
-1. **로그인** 페이지에 이전 연습에서 Azure 구독에 로그인하는 데 사용한 것과 같은 사용자 이름을 입력하고 **다음** 을 선택한 후 해당 암호를 입력하고 **로그인** 을 선택합니다.
-1. **Windows Admin Center에 로그인하시겠습니까?** 라는 메시지가 표시되면 **계속** 을 선택합니다.
-1. Windows Admin Center에서 로그인이 성공했는지 확인하고 Microsoft Edge 창에 새로 열린 탭을 닫습니다.
-1. **Windows Admin Center에서 Azure 시작** 창에서 **Azure Active Directory 애플리케이션** 이 **새로 만들기** 로 설정되어 있는지 확인하고 **연결** 을 선택합니다.
-1. 등록 절차의 단계 목록에서 **로그인** 을 선택합니다. 그러면 **요청된 권한** 이라는 레이블이 지정된 팝업 창이 열립니다.
-1. **요청된 권한** 팝업 창에서 **조직 대신 동의** 를 선택한 후 **수락** 을 선택합니다.
-
-#### <a name="task-2-integrate-an-on-premises-windows-server-with-azure-monitor"></a>작업 2: Azure Monitor와 온-프레미스 Windows Server 통합
-
-1. **SEA-SVR2** 의 Windows Admin Center를 표시하는 Microsoft Edge 창에서 **모든 연결** 창으로 이동합니다.
-1. **모든 연결** 창에서 **sea-svr2.contoso.com** 항목을 선택합니다. 
-1. **sea-svr2.contoso.com** 페이지의 **도구** 메뉴에서 **Azure Monitor** 를 선택한 후 **Azure에 로그인 및 설정** 을 선택합니다.
-1. **Azure Monitor 설정** 페이지에서 다음 설정을 지정하고 **설정** 을 선택합니다.
+1. **SEA-SVR2** 의 Azure Portal에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자의 도구 모음에서 **서비스 맵** 을 검색하고 **Marketplace** 섹션의 결과 목록에서 **서비스 맵** 을 선택합니다.
+1. **서비스 맵 솔루션 만들기** 블레이드의 **작업 영역 선택** 탭에서 다음 설정을 지정하고 **검토 + 만들기** 를 선택한 다음 **만들기** 를 선택합니다.
 
    | 설정 | 값 |
    | --- | --- |
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | 리소스 그룹 | **AZ801-L0902-RG** |
-   | 리소스 그룹 지역 | 이전 연습에서 가상 머신을 배포한 Azure 지역의 이름 |
-   | Log Analytics 작업 영역 | 이전 연습에서 만든 작업 영역의 이름 |
-   | Azure Arc 사용 | 선택 |
+   | Resource group | **AZ801-L0902-RG** |
+   | Log Analytics 작업 영역 | 이전 작업에서 만든 Log Analytics 작업 영역의 이름 |
 
-   >**참고**: 설정이 완료될 때까지 기다리지 말고 다음 연습을 진행하세요. 설정은 3분 정도 걸립니다.
+## <a name="exercise-2-configuring-monitoring-of-on-premises-servers"></a>연습 2: 온-프레미스 서버 모니터링 구성
 
-   >**참고**: 이 프로세스에서는 Log Analytics 에이전트 및 Dependency Agent를 자동으로 설치합니다.
+#### <a name="task-1-install-the-log-analytics-agent-and-the-dependency-agent"></a>작업 1: Log Analytics 에이전트 및 Dependency 에이전트를 배포합니다.
+
+1. **SEA-SVR2** 의 콘솔 세션에 연결된 동안 Azure Portal 표시하는 브라우저 창의 **에이전트 관리** 블레이드에서 **Windows 에이전트 다운로드(64비트)** 링크를 선택하여 64비트 Windows Log Analytics 에이전트를 다운로드합니다. 
+1. 에이전트 설치 관리자의 다운로드가 완료되면 다운로드한 파일을 클릭하여 설치 마법사를 시작합니다. 
+1. **Welcome** 페이지에서 **다음** 을 선택합니다.
+1. **사용 조건** 페이지에서 라이선스를 읽고 **동의함** 을 선택합니다.
+1. **대상 폴더** 페이지에서 기본 설치 폴더를 변경 또는 유지하고 **다음** 을 선택합니다.
+1. **에이전트 설치 옵션** 페이지에서 **에이전트를 Azure Log Analytics에 연결** 확인란을 선택한 후 **다음** 을 선택합니다.
+1. **Azure Log Analytics** 페이지에서 이전 연습에서 기록한 **작업 영역 ID** 및 **작업 영역 키(기본 키)** 를 입력합니다.
+1. 필요한 구성 설정 제공을 완료한 후 **다음** 을 선택합니다.
+1. **설치 준비** 페이지에서 선택 항목을 검토한 다음 **설치** 를 선택합니다.
+1. **구성이 완료되었습니다** 페이지에서 **마침** 을 선택합니다.
+1. **SEA-SVR2** 에서 관리자 권한으로 Windows PowerShell을 시작합니다.
+1. **관리자: Windows PowerShell** 콘솔에서 다음 명령을 실행하여 Dependency Agent를 설치합니다.
+
+   ```powershell
+   Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
+   .\InstallDependencyAgent-Windows.exe /S
+   ```
 
 ## <a name="exercise-3-configuring-monitoring-of-azure-vms"></a>연습 3: Azure VM 모니터링 구성
 
@@ -185,13 +158,16 @@ ms.locfileid: "144813011"
 
 1. **메트릭 네임스페이스** 드롭다운 목록에서 **새 게스트 메모리 메트릭 사용** 항목을 선택합니다.
 1. **게스트 메트릭 사용(미리 보기)** 창에서 제공된 정보를 검토합니다.
-1. **az801l09-vm0 \| 진단 설정** 페이지에서 **싱크** 탭을 선택하고 **Azure Monitor(미리 보기)** 섹션에서 **사용** 을 선택한 후 **저장** 을 선택합니다.
+1. **az801l09-vm0 \| 진단 설정** 페이지에서 **싱크** 탭을 선택하고 **Azure Monitor(미리 보기)** 섹션에서 **사용** 을 선택한 후 **저장** 을 선택합니다. 
+
+   >**참고**: Azure Monitor(미리 보기) 섹션 아래에서 경고 알림 상자를 선택하여 사용 단추를 활성화합니다.
+
 1. **az801l09-vm0 \| 메트릭** 페이지로 돌아가 보면 기본 차트에서 이때 **메트릭 네임스페이스** 드롭다운 목록에 **가상 머신 호스트** 및 **게스트(클래식)** 항목 외에 **가상 머신 게스트** 항목도 포함됩니다.
 
    >**참고**: **가상 머신 게스트** 항목을 표시하려면 페이지를 새로 고쳐야 할 수 있습니다.
 
 1. **az801l09-vm0 \| 메트릭** 페이지의 왼쪽 세로 메뉴에 있는 **모니터링** 섹션에서 **로그** 를 선택합니다.
-1. **az801l09-vm0 \| 로그** 페이지에서 **사용** 을 선택합니다.
+1. 필요한 경우 **az801l09-vm0 \| 로그** 페이지에서 **사용** 을 선택합니다.
 1. **Log Analytics 작업 영역 선택** 드롭다운 목록에서 이 랩의 앞부분에서 만든 Log Analytics 작업 영역을 선택한 후 **사용** 을 선택합니다.
 1. **az801l09-vm0 \| 로그** 페이지의 왼쪽 세로 메뉴에 있는 **모니터링** 섹션에서 **인사이트** 를 선택합니다.
 1. 필요한 경우 **az801l09-vm0 \| 인사이트** 페이지에서 **사용** 을 선택합니다.
@@ -199,7 +175,7 @@ ms.locfileid: "144813011"
    >**참고**: 이 설정은 Azure VM Insights 기능을 제공합니다. VM Insights는 Azure VM과 Windows 또는 Linux를 실행하는 온-프레미스 컴퓨터의 성능과 상태 모니터링을 지원하는 Azure Monitor 솔루션입니다.
 
 1. **SEA-SVR2** 의 Azure Portal에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자의 도구 모음에서 **모니터** 를 검색하여 선택한 후 **모니터 \| 개요** 페이지의 **인사이트** 에서 **가상 머신 인사이트** 를 선택합니다.
-1. **모니터 \| Virtual Machines** 페이지에서 **성능** 탭을 선택한 후 **지금 시도** 를 선택합니다.
+1. **모니터 \| Virtual Machines** 페이지에서 **성능** 탭을 선택한 후 필요한 경우 **지금 시도** 를 선택합니다.
 1. **모니터 \| 가상 머신** 페이지에서 **맵** 탭을 선택한 후 **지금 사용해 보기** 를 선택합니다.
 1. **적용 범위 관리** 페이지에서 **작업 영역 구성** 을 선택합니다.
 1. **Azure Monitor** 페이지의 **Log Analytics 작업 영역 선택** 드롭다운 메뉴에서 이 랩의 앞부분에서 만든 작업 영역을 선택한 후 **구성** 을 선택합니다.
@@ -240,7 +216,7 @@ ms.locfileid: "144813011"
    | 설정 | 값 |
    | --- | --- |
    | 구독 | 이 랩에서 사용 중인 Azure 구독의 이름 |
-   | 리소스 그룹 | **AZ801-L0902-RG** |
+   | Resource group | **AZ801-L0902-RG** |
    | 작업 그룹 이름 | **az801l09-ag1** |
    | 표시 이름 | **az801l09-ag1** |
 
@@ -254,7 +230,7 @@ ms.locfileid: "144813011"
    | --- | --- |
    | 경고 규칙 이름 | **CPU Percentage above the test threshold** |
    | 설명 | **테스트 임계값을 초과하는 CPU 백분율** |
-   | 리소스 그룹 | **AZ801-L0902-RG** |
+   | Resource group | **AZ801-L0902-RG** |
    | 심각도 | **Sev 3** |
    | 규칙을 만들면 바로 사용 | **예** |
 
@@ -303,7 +279,7 @@ ms.locfileid: "144813011"
 
    >**참고**: Log Analytics에 처음 액세스하는 경우 **Log Analytics 시작** 창을 닫아야 할 수 있습니다.
 
-1. **범위 선택** 페이지에서 **최근 항목** 탭을 선택하고 **az801l09-vm0** 을 선택한 후 **적용** 을 선택합니다.
+1. **범위 선택** 페이지에서 **최근** 탭을 선택하고, 이 랩의 앞부분에서 만든 고유한 작업 영역을 선택한 다음, **적용** 을 선택합니다.
 1. 쿼리 창에서 다음 쿼리를 붙여넣고 **실행** 을 선택한 후 결과 차트를 검토합니다.
 
    ```kql
@@ -316,8 +292,8 @@ ms.locfileid: "144813011"
    | render timechart
    ```
 
-1. 도구 모음에서 **쿼리** 를 선택하고 **쿼리** 창에서 **가용성** 노드를 확장한 후 **VM 가용성 추적** 타일을 선택하고 **실행** 단추를 선택한 후 결과를 검토합니다.
-1. **새 쿼리 1** 탭에서 **테이블** 헤더를 선택하고 **가상 머신** 섹션의 테이블 목록을 검토합니다.
+1. 도구 모음에서 **쿼리** 를 선택하고 **쿼리** 창에서 **Virtual Machines** 노드를 확장한 후 **VM 가용성 추적** 타일을 선택하고 **실행** 단추를 선택한 후 결과를 검토합니다.
+1. **새 쿼리 1** 탭에서 **테이블** 헤더를 선택하고 **VM용 Azure Monitor** 섹션에서 테이블 목록을 검토합니다.
 
    >**참고**: 여러 테이블의 이름은 이 랩의 앞부분에서 설치한 솔루션에 해당합니다. 특히, **InsightMetrics** 는 Azure VM Insights에서 성능 메트릭을 저장하는 데 사용됩니다.
 
@@ -348,7 +324,7 @@ ms.locfileid: "144813011"
    Get-AzResourceGroup -Name 'AZ801-L09*'
    ```
 
-   > **참고**: 출력에 이 랩에서 만든 리소스 그룹만 포함되어 있는지 확인하세요. 이 그룹은 이 작업에서 삭제됩니다.
+   > **참고**: 출력에 이 랩에서 만든 리소스 그룹만 포함되어 있는지 확인합니다. 이 그룹은 이 작업에서 삭제됩니다.
 
 1. 다음 명령을 실행하여 이 랩에서 만든 모든 리소스 그룹을 삭제합니다.
 

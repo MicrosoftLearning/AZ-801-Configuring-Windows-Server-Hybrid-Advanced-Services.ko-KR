@@ -2,12 +2,12 @@
 lab:
   title: '랩: Hyper-V 복제본 및 Windows Server 백업 구현'
   module: 'Module 4: Disaster Recovery in Windows Server'
-ms.openlocfilehash: cf313f1971f038711a4164a65d10b8eacc074b55
-ms.sourcegitcommit: 9a51ea796ef3806ab9e7ec1ff75034b2f929ed2a
+ms.openlocfilehash: 9f668ce6b8f9f2c6802de4a03ee0038b3066f34e
+ms.sourcegitcommit: d2e9d886e710729f554d2ba62d1abe3c3f65fcb6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/28/2022
-ms.locfileid: "137907121"
+ms.lasthandoff: 07/10/2022
+ms.locfileid: "147046984"
 ---
 # <a name="lab-implementing-hyper-v-replica-and-windows-server-backup"></a>랩: Hyper-V 복제본 및 Windows Server 백업 구현
 
@@ -31,7 +31,7 @@ Contoso, Ltd.에서 관리자로 일하고 있습니다. Contoso는 새로운 �
 > **참고**: **AZ-801T00A-SEA-DC1**, **AZ-801T00A-SEA-SVR1**, **AZ-801T00A-SEA-SVR2** 가상 머신은 **SEA-DC1**, **SEA-SVR1**, **SEA-SVR2** 의 설치를 호스팅합니다.
 
 1. **SEA-SVR2** 를 선택합니다.
-1. 다음 자격 증명을 사용하여 로그인:
+1. 다음 자격 증명을 사용하여 로그인합니다.
 
    - 사용자 이름: **Administrator**
    - 암호: **Pa55w.rd**
@@ -70,7 +70,7 @@ Contoso, Ltd.에서 관리자로 일하고 있습니다. Contoso는 새로운 �
 
    ```powershell
    New-Item -ItemType Directory -Path C:\ReplicaStorage -Force
-   Set-VMReplicationServer -ReplicationEnabled $true -AllowedAuthenticationType Kerberos -ReplicationAllowedFromAnyServer $true -DefaultStorageLocation C:\ReplicaStorage
+   Set-VMReplicationServer -ReplicationEnabled $true -AllowedAuthenticationType Kerberos -KerberosAuthenticationPort 8080 -ReplicationAllowedFromAnyServer $true -DefaultStorageLocation C:\ReplicaStorage
    ```
 
 1. **HYPER-V 복제본** 에 대한 복제본 서버로 **SEA-SVR2** 가 구성되어 있는지 확인하려면 다음 명령을 실행합니다.
@@ -83,7 +83,7 @@ Contoso, Ltd.에서 관리자로 일하고 있습니다. Contoso는 새로운 �
 
    - **RepEnabled: True**
    - **AuthType: Kerb**
-   - **KerAuthPort: 80**
+   - **KerAuthPort: 8080**
    - **CertAuthPort: 443**
    - **AllowAnyServer: True**
 
